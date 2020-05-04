@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using MediaPlayer.DAL;
 
-namespace MediaPlayer.DAL.Interfaces
+namespace MediaPlayer.BLL.Interfaces
 {
     public interface IMusicPlaylistsService
     {

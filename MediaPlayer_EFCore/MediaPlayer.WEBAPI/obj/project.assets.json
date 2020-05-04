@@ -2597,6 +2597,19 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "MediaPlayer.BLL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "MediaPlayer.DAL": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MediaPlayer.BLL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MediaPlayer.BLL.dll": {}
+        }
+      },
       "MediaPlayer.DAL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -8353,6 +8366,11 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "MediaPlayer.BLL/1.0.0": {
+      "type": "project",
+      "path": "../MediaPlayer.BLL/MediaPlayer.BLL.csproj",
+      "msbuildProject": "../MediaPlayer.BLL/MediaPlayer.BLL.csproj"
+    },
     "MediaPlayer.DAL/1.0.0": {
       "type": "project",
       "path": "../MediaPlayer.DAL/MediaPlayer.DAL.csproj",
@@ -8361,7 +8379,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "MediaPlayer.DAL >= 1.0.0",
+      "MediaPlayer.BLL >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 3.1.3",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.3",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.3",
@@ -8400,8 +8418,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "F:\\Саша навчання\\2 Курс\\4 семестр\\ООП\\EF Core\\MediaPlayer_EFCore\\MediaPlayer.DAL\\MediaPlayer.DAL.csproj": {
-              "projectPath": "F:\\Саша навчання\\2 Курс\\4 семестр\\ООП\\EF Core\\MediaPlayer_EFCore\\MediaPlayer.DAL\\MediaPlayer.DAL.csproj"
+            "F:\\Саша навчання\\2 Курс\\4 семестр\\ООП\\EF Core\\MediaPlayer_EFCore\\MediaPlayer.BLL\\MediaPlayer.BLL.csproj": {
+              "projectPath": "F:\\Саша навчання\\2 Курс\\4 семестр\\ООП\\EF Core\\MediaPlayer_EFCore\\MediaPlayer.BLL\\MediaPlayer.BLL.csproj"
             }
           }
         }

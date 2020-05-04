@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
-using MediaPlayer.DAL.Interfaces;
+﻿using MediaPlayer.DAL.Interfaces;
 
 namespace MediaPlayer.DAL.Repositories
 {

@@ -13,8 +13,9 @@ using Microsoft.Extensions.Logging;
 using MediaPlayer.DAL;
 using MediaPlayer.DAL.Interfaces;
 using MediaPlayer.DAL.Repositories;
-using MediaPlayer.DAL.Services;
 using MediaPlayer.DAL.UnitOfWork;
+using MediaPlayer.BLL.Services;
+using MediaPlayer.BLL.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace MediaPlayer.WEBAPI

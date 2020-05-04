@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using MediaPlayer.BLL.Interfaces;
 using MediaPlayer.DAL.Interfaces;
+using MediaPlayer.DAL;
 
-namespace MediaPlayer.DAL.Services
+namespace MediaPlayer.BLL.Services
 {
     public class MusicService : IMusicService
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MediaPlayer.DAL.Interfaces;
+using MediaPlayer.BLL.Interfaces;
 using MediaPlayer.DAL;
 
 namespace MediaPlayer.WEBAPI.Controllers
