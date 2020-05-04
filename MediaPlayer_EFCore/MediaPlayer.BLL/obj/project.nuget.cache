@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "kVz7i7k/9HJj+c5ZNruPB6bO+81DY+7/lu9NhWHEYyH9c+4odWVIJ3rTU/xWg5Z5Qvof1XtZ0w8D8wdoM+L4FQ==",
+  "dgSpecHash": "dJFxYf0BIZ1yobxVhZSQkLIeMd08lW3XNmz9o6B27C34w0TLZ2vUoUi5S9Fh/g5l+JjV10eqWpAX6Z5jSijNBA==",
   "success": true,
   "projectFilePath": "F:\\Саша навчання\\2 Курс\\4 семестр\\ООП\\EF Core\\MediaPlayer_EFCore\\MediaPlayer.BLL\\MediaPlayer.BLL.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Аня\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
+    "C:\\Users\\Аня\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
     "C:\\Users\\Аня\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\Аня\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

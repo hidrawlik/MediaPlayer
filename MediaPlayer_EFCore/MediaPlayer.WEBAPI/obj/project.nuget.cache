@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "GFa/jDEutIacakK9o1EtxVTv9KOxjIzjbr44i+SjQJb43N7NxWe3zVPW9CHrP70AWCiEErD4CO6bOlK5VRhE+w==",
+  "dgSpecHash": "zxahhLnyl8hUv1/9iZmDV4CfXk1cQAzcCXlEBsYbmI9u3B2k/ovv22rFNk6L7iS3wohzS1Zk3+r+i9EFA6xq4w==",
   "success": true,
   "projectFilePath": "F:\\Саша навчання\\2 Курс\\4 семестр\\ООП\\EF Core\\MediaPlayer_EFCore\\MediaPlayer.WEBAPI\\MediaPlayer.WEBAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Аня\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
+    "C:\\Users\\Аня\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
     "C:\\Users\\Аня\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Аня\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
     "C:\\Users\\Аня\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\3.1.0\\microsoft.aspnetcore.razor.language.3.1.0.nupkg.sha512",

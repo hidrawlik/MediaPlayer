@@ -136,3 +136,5 @@ F:\Саша навчання\2 Курс\4 семестр\ООП\EF Core\MediaPla
 F:\Саша навчання\2 Курс\4 семестр\ООП\EF Core\MediaPlayer_EFCore\MediaPlayer.WEBAPI\bin\Debug\netcoreapp3.1\MediaPlayer.BLL.exe
 F:\Саша навчання\2 Курс\4 семестр\ООП\EF Core\MediaPlayer_EFCore\MediaPlayer.WEBAPI\bin\Debug\netcoreapp3.1\MediaPlayer.BLL.dll
 F:\Саша навчання\2 Курс\4 семестр\ООП\EF Core\MediaPlayer_EFCore\MediaPlayer.WEBAPI\bin\Debug\netcoreapp3.1\MediaPlayer.BLL.pdb
+F:\Саша навчання\2 Курс\4 семестр\ООП\EF Core\MediaPlayer_EFCore\MediaPlayer.WEBAPI\bin\Debug\netcoreapp3.1\AutoMapper.dll
+F:\Саша навчання\2 Курс\4 семестр\ООП\EF Core\MediaPlayer_EFCore\MediaPlayer.WEBAPI\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

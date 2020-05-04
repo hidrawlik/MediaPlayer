@@ -41,10 +41,12 @@ F:\Саша навчання\2 Курс\4 семестр\ООП\EF Core\MediaPla
 F:\Саша навчання\2 Курс\4 семестр\ООП\EF Core\MediaPlayer_EFCore\MediaPlayer.BLL\bin\Debug\netcoreapp3.1\MediaPlayer.DAL.dll
 F:\Саша навчання\2 Курс\4 семестр\ООП\EF Core\MediaPlayer_EFCore\MediaPlayer.BLL\bin\Debug\netcoreapp3.1\MediaPlayer.DAL.pdb
 F:\Саша навчання\2 Курс\4 семестр\ООП\EF Core\MediaPlayer_EFCore\MediaPlayer.BLL\obj\Debug\netcoreapp3.1\MediaPlayer.BLL.csprojAssemblyReference.cache
-F:\Саша навчання\2 Курс\4 семестр\ООП\EF Core\MediaPlayer_EFCore\MediaPlayer.BLL\obj\Debug\netcoreapp3.1\MediaPlayer.BLL.csproj.CoreCompileInputs.cache
 F:\Саша навчання\2 Курс\4 семестр\ООП\EF Core\MediaPlayer_EFCore\MediaPlayer.BLL\obj\Debug\netcoreapp3.1\MediaPlayer.BLL.AssemblyInfoInputs.cache
 F:\Саша навчання\2 Курс\4 семестр\ООП\EF Core\MediaPlayer_EFCore\MediaPlayer.BLL\obj\Debug\netcoreapp3.1\MediaPlayer.BLL.AssemblyInfo.cs
 F:\Саша навчання\2 Курс\4 семестр\ООП\EF Core\MediaPlayer_EFCore\MediaPlayer.BLL\obj\Debug\netcoreapp3.1\MediaPlayer.BLL.csproj.CopyComplete
 F:\Саша навчання\2 Курс\4 семестр\ООП\EF Core\MediaPlayer_EFCore\MediaPlayer.BLL\obj\Debug\netcoreapp3.1\MediaPlayer.BLL.dll
 F:\Саша навчання\2 Курс\4 семестр\ООП\EF Core\MediaPlayer_EFCore\MediaPlayer.BLL\obj\Debug\netcoreapp3.1\MediaPlayer.BLL.pdb
 F:\Саша навчання\2 Курс\4 семестр\ООП\EF Core\MediaPlayer_EFCore\MediaPlayer.BLL\obj\Debug\netcoreapp3.1\MediaPlayer.BLL.genruntimeconfig.cache
+F:\Саша навчання\2 Курс\4 семестр\ООП\EF Core\MediaPlayer_EFCore\MediaPlayer.BLL\bin\Debug\netcoreapp3.1\AutoMapper.dll
+F:\Саша навчання\2 Курс\4 семестр\ООП\EF Core\MediaPlayer_EFCore\MediaPlayer.BLL\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+F:\Саша навчання\2 Курс\4 семестр\ООП\EF Core\MediaPlayer_EFCore\MediaPlayer.BLL\obj\Debug\netcoreapp3.1\MediaPlayer.BLL.csproj.CoreCompileInputs.cache

@@ -4,10 +4,10 @@ using MediaPlayer.DAL.Entities;
 
 namespace MediaPlayer.DAL.Repositories
 {
-    public class MusicRepository : GenericRepository<Music>, IMusicRepository
+    public class UserPlaylistRepository : GenericRepository<UserPlaylist>, IUserPlaylistRepository
     {
-        public MusicRepository(MediaDBContext db)
-            : base(db)
+        public UserPlaylistRepository(MediaDBContext db)
+            :base(db)
         {
         }
     }

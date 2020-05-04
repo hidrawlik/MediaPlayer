@@ -5,7 +5,7 @@ using MediaPlayer.DAL.Entities;
 
 namespace MediaPlayer.DAL.Interfaces.IEntityRepositories
 {
-    public interface IMusicRepository : IGenericRepository<Music>
+    public interface IUserRepository : IGenericRepository<User>
     {
     }
 }

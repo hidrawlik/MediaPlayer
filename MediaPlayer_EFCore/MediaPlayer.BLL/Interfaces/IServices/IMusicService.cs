@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using MediaPlayer.DAL;
+using MediaPlayer.BLL.DTO;
 
-namespace MediaPlayer.BLL.Interfaces
+namespace MediaPlayer.BLL.Interfaces.IServices
 {
     public interface IMusicService
     {
-        Task<IEnumerable<Music>> GetAll();
+        Task<IEnumerable<MusicDTO>> GetAllMusic();
 
-        Task<Music> Get(int Id);
+        Task<MusicDTO> GetMusic(int? Id);
 
-        Task Add(Music music);
+        Task AddMusic(MusicDTO music);
 
-        Task Update(Music music);
+        Task UpdateMusic(MusicDTO music);
         
-        Task Delete(Music music);
+        Task DeleteMusic(MusicDTO music);
     }
 }

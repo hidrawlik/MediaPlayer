@@ -11,11 +11,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MediaPlayer.DAL;
+using MediaPlayer.DAL.EFCoreContexts;
 using MediaPlayer.DAL.Interfaces;
+using MediaPlayer.DAL.Interfaces.IEntityRepositories;
 using MediaPlayer.DAL.Repositories;
 using MediaPlayer.DAL.UnitOfWork;
 using MediaPlayer.BLL.Services;
-using MediaPlayer.BLL.Interfaces;
+using MediaPlayer.BLL.Interfaces.IServices;
 using Microsoft.EntityFrameworkCore;
 
 namespace MediaPlayer.WEBAPI
@@ -36,17 +38,17 @@ namespace MediaPlayer.WEBAPI
             services.AddControllers();
 
             #region Repositories
-            services.AddTransient<IMusicPlaylistsRepository, MusicPlaylistsRepository>();
+            services.AddTransient<IMusicPlaylistRepository, MusicPlaylistRepository>();
             services.AddTransient<IMusicRepository, MusicRepository>();
-            services.AddTransient<IUserPlaylistsRepository, UserPlaylistsRepository>();
-            services.AddTransient<IUsersRepository, UsersRepository>();
+            services.AddTransient<IUserPlaylistRepository, UserPlaylistRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
             #endregion
 
             #region Services
-            services.AddTransient<IMusicPlaylistsService, MusicPlaylistsService>();
+            services.AddTransient<IMusicPlaylistService, MusicPlaylistService>();
             services.AddTransient<IMusicService, MusicService>();
-            services.AddTransient<IUserPlaylistsService, UserPlaylistsService>();
-            services.AddTransient<IUsersService, UsersService>();
+            services.AddTransient<IUserPlaylistService, UserPlaylistService>();
+            services.AddTransient<IUserService, UserService>();
             #endregion
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();

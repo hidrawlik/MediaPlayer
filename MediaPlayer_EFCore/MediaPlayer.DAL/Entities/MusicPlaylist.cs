@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using MediaPlayer.DAL.Interfaces;
 
-namespace MediaPlayer.DAL
+namespace MediaPlayer.DAL.Entities
 {
-    public partial class MusicPlaylists : IEntity
+    public partial class MusicPlaylist : IEntity
     {
         public int Id { get; set; }
         public int UserPlaylistId { get; set; }
         public int MusicId { get; set; }
 
         public virtual Music Music { get; set; }
-        public virtual UserPlaylists UserPlaylist { get; set; }
+        public virtual UserPlaylist UserPlaylist { get; set; }
     }
 }

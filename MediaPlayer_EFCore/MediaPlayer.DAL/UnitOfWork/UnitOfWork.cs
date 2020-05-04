@@ -2,32 +2,33 @@
 using System.Collections.Generic;
 using System.Text;
 using MediaPlayer.DAL.Interfaces;
+using MediaPlayer.DAL.Interfaces.IEntityRepositories;
 
 namespace MediaPlayer.DAL.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly IMusicPlaylistsRepository _musicPlaylistsRepository;
+        private readonly IMusicPlaylistRepository _musicPlaylistRepository;
         private readonly IMusicRepository _musicRepository;
-        private readonly IUserPlaylistsRepository _userPlaylistsRepository;
-        private readonly IUsersRepository _usersRepository;
+        private readonly IUserPlaylistRepository _userPlaylistRepository;
+        private readonly IUserRepository _userRepository;
         
-        public UnitOfWork(IMusicPlaylistsRepository musicPlaylistsRepository,
+        public UnitOfWork(IMusicPlaylistRepository musicPlaylistsRepository,
             IMusicRepository musicRepository,
-            IUserPlaylistsRepository userPlaylistsRepository,
-            IUsersRepository usersRepository)
+            IUserPlaylistRepository userPlaylistsRepository,
+            IUserRepository usersRepository)
         {
-            _musicPlaylistsRepository = musicPlaylistsRepository;
+            _musicPlaylistRepository = musicPlaylistsRepository;
             _musicRepository = musicRepository;
-            _userPlaylistsRepository = userPlaylistsRepository;
-            _usersRepository = usersRepository;
+            _userPlaylistRepository = userPlaylistsRepository;
+            _userRepository = usersRepository;
         }
 
-        public IMusicPlaylistsRepository musicPlaylistsRepository
+        public IMusicPlaylistRepository musicPlaylistsRepository
         {
             get
             {
-                return _musicPlaylistsRepository;
+                return _musicPlaylistRepository;
             }
         }
         
@@ -39,19 +40,19 @@ namespace MediaPlayer.DAL.UnitOfWork
             }
         }
         
-        public IUserPlaylistsRepository userPlaylistsRepository
+        public IUserPlaylistRepository userPlaylistsRepository
         {
             get
             {
-                return _userPlaylistsRepository;
+                return _userPlaylistRepository;
             }
         }
         
-        public IUsersRepository usersRepository
+        public IUserRepository usersRepository
         {
             get
             {
-                return _usersRepository;
+                return _userRepository;
             }
         }
     }

@@ -1,8 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using MediaPlayer.DAL.Entities;
 
-namespace MediaPlayer.DAL
+namespace MediaPlayer.DAL.EFCoreContexts
 {
     public partial class MediaDBContext : DbContext
     {
@@ -16,9 +17,9 @@ namespace MediaPlayer.DAL
         }
 
         public virtual DbSet<Music> Music { get; set; }
-        public virtual DbSet<MusicPlaylists> MusicPlaylists { get; set; }
-        public virtual DbSet<UserPlaylists> UserPlaylists { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<MusicPlaylist> MusicPlaylists { get; set; }
+        public virtual DbSet<UserPlaylist> UserPlaylists { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -43,7 +44,7 @@ namespace MediaPlayer.DAL
                     .HasMaxLength(50);
             });
 
-            modelBuilder.Entity<MusicPlaylists>(entity =>
+            modelBuilder.Entity<MusicPlaylist>(entity =>
             {
                 entity.HasIndex(e => new { e.UserPlaylistId, e.MusicId })
                     .HasName("UIX_PlaylistMusic")
@@ -62,7 +63,7 @@ namespace MediaPlayer.DAL
                     .HasConstraintName("FK_MusicPlaylists_UserPlaylists");
             });
 
-            modelBuilder.Entity<UserPlaylists>(entity =>
+            modelBuilder.Entity<UserPlaylist>(entity =>
             {
                 entity.HasIndex(e => new { e.UserId, e.PlaylistName })
                     .HasName("UIX_UserPlaylists")
@@ -79,7 +80,7 @@ namespace MediaPlayer.DAL
                     .HasConstraintName("FK_UserPlaylists_Users");
             });
 
-            modelBuilder.Entity<Users>(entity =>
+            modelBuilder.Entity<User>(entity =>
             {
                 entity.Property(e => e.Email)
                     .IsRequired()

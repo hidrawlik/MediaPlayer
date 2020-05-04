@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using MediaPlayer.BLL.Interfaces;
+using MediaPlayer.BLL.Interfaces.IServices;
 using MediaPlayer.DAL.Interfaces;
-using MediaPlayer.DAL;
+using MediaPlayer.BLL.DTO;
+using MediaPlayer.DAL.Entities;
+using AutoMapper;
 
 namespace MediaPlayer.BLL.Services
 {
@@ -15,28 +18,67 @@ namespace MediaPlayer.BLL.Services
             this.unitOfWork = unitOfWork;
         }
 
-        public async Task Add(Music music)
+        public async Task AddMusic(MusicDTO musicDto)
         {
+            Music music = new Music
+            {
+                Name = musicDto.Name,
+                GroupName = musicDto.GroupName,
+                Year = musicDto.Year,
+                Album = musicDto.Album,
+            };
             await unitOfWork.musicRepository.Add(music);
         }
 
-        public async Task Delete(Music music)
+        public async Task DeleteMusic(MusicDTO musicDto)
         {
+            Music music = new Music
+            {
+                Id = musicDto.Id,
+                Name = musicDto.Name,
+                GroupName = musicDto.GroupName,
+                Year = musicDto.Year,
+                Album = musicDto.Album
+            };
             await unitOfWork.musicRepository.Delete(music);
         }
 
-        public async  Task<Music> Get(int Id)
+        public async  Task<MusicDTO> GetMusic(int? Id)
         {
-            return await unitOfWork.musicRepository.Get(Id);
+            if (Id == null)
+            {
+                throw new Exception("Не встановлений id пісні");
+            }
+
+            Music music = await unitOfWork.musicRepository.Get(Id.Value);
+            if (music == null)
+            {
+                throw new Exception("Not Found");
+            }
+
+            return new MusicDTO {
+                Id = music.Id,
+                Album = music.Album,
+                GroupName = music.GroupName,
+                Name = music.Name,
+                Year = music.Year
+            };
         }
 
-        public async Task<IEnumerable<Music>> GetAll()
+        public async Task<IEnumerable<MusicDTO>> GetAllMusic()
         {
-            return await unitOfWork.musicRepository.GetAll();
+            IMapper mapper = new MapperConfiguration(cfg => cfg.CreateMap<Music, MusicDTO>()).CreateMapper();
+            IEnumerable<Music> musics = await unitOfWork.musicRepository.GetAll();
+            return mapper.Map<IEnumerable<Music>, List<MusicDTO>>(musics);
         }
-
-        public async Task Update(Music music)
+        
+        public async Task UpdateMusic(MusicDTO musicDto)
         {
+            Music music = await unitOfWork.musicRepository.Get(musicDto.Id);
+            if(music == null)
+            {
+                throw new Exception("Not found");
+            }
             await unitOfWork.musicRepository.Update(music);
         }
     }

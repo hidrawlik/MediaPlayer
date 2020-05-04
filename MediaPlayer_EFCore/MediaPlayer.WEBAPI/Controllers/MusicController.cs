@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MediaPlayer.BLL.Interfaces;
-using MediaPlayer.DAL;
+using MediaPlayer.BLL.Interfaces.IServices;
+using MediaPlayer.BLL.DTO;
 
 namespace MediaPlayer.WEBAPI.Controllers
 {
@@ -21,72 +21,72 @@ namespace MediaPlayer.WEBAPI.Controllers
         }
          
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Music>>> GetAll()
+        public async Task<ActionResult<IEnumerable<MusicDTO>>> GetAll()
         {
-            IEnumerable<Music> musics = await musicService.GetAll();
+            IEnumerable<MusicDTO> musicsDto = await musicService.GetAllMusic();
 
-            if(musics == null)
+            if(musicsDto == null)
             {
                 return NotFound();
             }
 
-            return Ok(musics);
+            return Ok(musicsDto);
         }
 
         [Route("{Id}")]
         [HttpGet]
-        public async Task<ActionResult<Music>> Get(int Id)
+        public async Task<ActionResult<MusicDTO>> Get(int Id)
         {
-            Music music = await musicService.Get(Id);
+            MusicDTO musicDto = await musicService.GetMusic(Id);
             
-            if(music == null)
+            if(musicDto == null)
             {
                 return NotFound();
             }
 
-            return Ok(music);
+            return Ok(musicDto);
         }
 
         [HttpPost]
-        public async Task<ActionResult<Music>> Add(Music music)
+        public async Task<ActionResult<MusicDTO>> Add(MusicDTO musicDto)
         {
-            if (music == null)
+            if (musicDto == null)
             {
                 return BadRequest();
             }
-            await musicService.Add(music);
-            return Ok(music);
+            await musicService.AddMusic(musicDto);
+            return Ok(musicDto);
         }
 
         [HttpPut]
-        public async Task<ActionResult<Music>> Update(Music music)
+        public async Task<ActionResult<MusicDTO>> Update(MusicDTO musicDto)
         {
-            if (music == null)
+            if (musicDto == null)
             {
                 return BadRequest();
             }
             
-            if (musicService.Get(music.Id) == null)
+            if (musicService.GetMusic(musicDto.Id) == null)
             {
                 return NotFound();
             }
             
-            await musicService.Update(music);
-            return Ok(music);
+            await musicService.UpdateMusic(musicDto);
+            return Ok(musicDto);
         }
 
         [HttpDelete("{Id}")]
-        public async Task<ActionResult<Music>> Delete(int Id)
+        public async Task<ActionResult<MusicDTO>> Delete(int Id)
         {
-            Music music = musicService.Get(Id).Result;
+            MusicDTO musicDto = musicService.GetMusic(Id).Result;
             
-            if(music == null)
+            if(musicDto == null)
             {
                 return NotFound();
             }
 
-            await musicService.Delete(music);
-            return Ok(music);
+            await musicService.DeleteMusic(musicDto);
+            return Ok(musicDto);
         }
     }
 }

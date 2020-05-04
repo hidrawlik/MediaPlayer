@@ -4,19 +4,18 @@ using MediaPlayer.DAL.Interfaces;
 
 namespace MediaPlayer.DAL.Entities
 {
-    public partial class Music : IEntity
+    public partial class UserPlaylist : IEntity
     {
-        public Music()
+        public UserPlaylist()
         {
             MusicPlaylists = new HashSet<MusicPlaylist>();
         }
 
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string GroupName { get; set; }
-        public int Year { get; set; }
-        public string Album { get; set; }
+        public int UserId { get; set; }
+        public string PlaylistName { get; set; }
 
+        public virtual User User { get; set; }
         public virtual ICollection<MusicPlaylist> MusicPlaylists { get; set; }
     }
 }

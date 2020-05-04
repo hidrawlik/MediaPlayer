@@ -1,41 +1,41 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using MediaPlayer.BLL.Interfaces;
+using MediaPlayer.BLL.Interfaces.IServices;
 using MediaPlayer.DAL.Interfaces;
-using MediaPlayer.DAL;
+using MediaPlayer.DAL.Entities;
 
 namespace MediaPlayer.BLL.Services
 {
-    public class UsersService : IUsersService
+    public class UserService : IUserService
     {
         private readonly IUnitOfWork unitOfWork;
 
-        public UsersService(IUnitOfWork unitOfWork)
+        public UserService(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }
 
-        public async Task Add(Users user)
+        public async Task Add(User user)
         {
             await unitOfWork.usersRepository.Add(user);
         }
 
-        public async Task Delete(Users user)
+        public async Task Delete(User user)
         {
             await unitOfWork.usersRepository.Delete(user);
         }
 
-        public async Task<Users> Get(int Id)
+        public async Task<User> Get(int Id)
         {
             return await unitOfWork.usersRepository.Get(Id);
         }
 
-        public async Task<IEnumerable<Users>> GetAll()
+        public async Task<IEnumerable<User>> GetAll()
         {
             return await unitOfWork.usersRepository.GetAll();
         }
 
-        public async Task Update(Users user)
+        public async Task Update(User user)
         {
             await unitOfWork.usersRepository.Update(user);
         }
