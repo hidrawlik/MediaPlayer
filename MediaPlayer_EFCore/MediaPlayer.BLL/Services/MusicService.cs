@@ -23,9 +23,9 @@ namespace MediaPlayer.BLL.Services
             Music music = new Music
             {
                 Name = musicDto.Name,
-                GroupName = musicDto.GroupName,
+                Author = musicDto.Author,
                 Year = musicDto.Year,
-                Album = musicDto.Album,
+                AlbumId = musicDto.AlbumId,
             };
             await unitOfWork.musicRepository.Add(music);
         }
@@ -36,9 +36,9 @@ namespace MediaPlayer.BLL.Services
             {
                 Id = musicDto.Id,
                 Name = musicDto.Name,
-                GroupName = musicDto.GroupName,
+                Author = musicDto.Author,
                 Year = musicDto.Year,
-                Album = musicDto.Album
+                AlbumId = musicDto.AlbumId
             };
             await unitOfWork.musicRepository.Delete(music);
         }
@@ -58,8 +58,8 @@ namespace MediaPlayer.BLL.Services
 
             return new MusicDTO {
                 Id = music.Id,
-                Album = music.Album,
-                GroupName = music.GroupName,
+                AlbumId = music.AlbumId,
+                Author = music.Author,
                 Name = music.Name,
                 Year = music.Year
             };

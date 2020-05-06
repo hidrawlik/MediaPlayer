@@ -2,7 +2,7 @@
 using MediaPlayer.DAL.Interfaces.IEntityRepositories;
 using MediaPlayer.DAL.Entities;
 
-namespace MediaPlayer.DAL.Repositories
+namespace MediaPlayer.DAL.Repositories.EntityRepositories
 {
     public class MusicRepository : GenericRepository<Music>, IMusicRepository
     {

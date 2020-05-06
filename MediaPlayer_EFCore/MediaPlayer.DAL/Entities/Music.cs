@@ -13,10 +13,13 @@ namespace MediaPlayer.DAL.Entities
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public string GroupName { get; set; }
-        public int Year { get; set; }
-        public string Album { get; set; }
+        public string Author { get; set; }
+        public int? Year { get; set; }
+        public int? AlbumId { get; set; }
+        public byte[] Photo { get; set; }
 
+        public Album Album { get; set; }
         public virtual ICollection<MusicPlaylist> MusicPlaylists { get; set; }
+        public virtual ICollection<MusicGenre> MusicGenres { get; set; }
     }
 }

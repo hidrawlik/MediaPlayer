@@ -14,11 +14,12 @@ using MediaPlayer.DAL;
 using MediaPlayer.DAL.EFCoreContexts;
 using MediaPlayer.DAL.Interfaces;
 using MediaPlayer.DAL.Interfaces.IEntityRepositories;
-using MediaPlayer.DAL.Repositories;
+using MediaPlayer.DAL.Repositories.EntityRepositories;
 using MediaPlayer.DAL.UnitOfWork;
 using MediaPlayer.BLL.Services;
 using MediaPlayer.BLL.Interfaces.IServices;
 using Microsoft.EntityFrameworkCore;
+using MediaPlayer.DAL.Repositories;
 
 namespace MediaPlayer.WEBAPI
 {
@@ -42,6 +43,10 @@ namespace MediaPlayer.WEBAPI
             services.AddTransient<IMusicRepository, MusicRepository>();
             services.AddTransient<IUserPlaylistRepository, UserPlaylistRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IAdminRepository, AdminRepository>();
+            services.AddTransient<IAlbumRepository, AlbumRepository>();
+            services.AddTransient<IMusicGenreRepository, MusicGenreRepository>();
+            services.AddTransient<IGenreRepository, GenreRepository>();
             #endregion
 
             #region Services
