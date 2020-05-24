@@ -19,6 +19,8 @@ using MediaPlayer.BLL.DTOs.MusicDTO;
 using MediaPlayer.BLL.Validation;
 using AutoMapper;
 using MediaPlayer.BLL;
+using FluentValidation.AspNetCore;
+using MediaPlayer.WEBAPI.Filters;
 
 namespace MediaPlayer.WEBAPI
 {
@@ -58,11 +60,21 @@ namespace MediaPlayer.WEBAPI
             services.AddTransient<IGenreService, GenreService>();
             #endregion
 
-            services.AddAutoMapper(typeof (OrganizationProfile));
+            services.AddAutoMapper(typeof(OrganizationProfile));
+
+            #region FluentValidation
+
+            services.AddMvc(setup =>
+            {
+                setup.Filters.Add(typeof(ValidatorActionFilter));
+            }).AddFluentValidation();
 
             #region DTO Validators
             services.AddTransient<IValidator<MusicCUDTO>, MusicCUDTOValidator>();
             #endregion
+
+            #endregion
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

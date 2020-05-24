@@ -19,6 +19,14 @@ namespace MediaPlayer.BLL.Validation
             RuleFor(e => e.Year)
                 .LessThanOrEqualTo(DateTime.Now.Year).WithMessage("Year must be less than or equal to " + DateTime.Now.Year)
                 .GreaterThanOrEqualTo(1970).WithMessage("Year must be greater than or equal to " + 1970);
+
+            RuleFor(e => e.Genre)
+                .MinimumLength(3).WithMessage("Length must be greater than 2 characters")
+                .MaximumLength(30).WithMessage("Length must be lesser than or equal to 30 characters");
+
+            RuleFor(e => e.Album)
+                .MinimumLength(3).WithMessage("Length must be greater than 2 characters")
+                .MaximumLength(50).WithMessage("Length must be lesser than or equal to 50 characters");
         }
     }
 }

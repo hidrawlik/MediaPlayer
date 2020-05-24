@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OY1/DU1KlKt4wlBEdqBVfwwCwvzBzChMqEKoKIatbZMvFyc7GJkxuIZ6n1t7Isg/rVt90UBpC81UFAzO9urQyQ==",
+  "dgSpecHash": "Yw8ox55Y3EclX21V4suZ2Xnqam9Rb0gRdmOaqdo8Zy8FbgCpzQfecj8Of1llAMU7xh9JE6GYeFiZyR8eKq3FvQ==",
   "success": true,
   "projectFilePath": "F:\\Саша навчання\\2 Курс\\4 семестр\\ООП\\AspDotNetCore\\MediaPlayer\\MediaPlayer.WEBAPI\\MediaPlayer.WEBAPI.csproj",
   "expectedPackageFiles": [
@@ -19,7 +19,7 @@
     "C:\\Users\\Аня\\.nuget\\packages\\microsoft.aspnetcore.dataprotection.abstractions\\2.2.0\\microsoft.aspnetcore.dataprotection.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Аня\\.nuget\\packages\\microsoft.aspnetcore.hosting.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Аня\\.nuget\\packages\\microsoft.aspnetcore.hosting.server.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.server.abstractions.2.2.0.nupkg.sha512",
-    "C:\\Users\\Аня\\.nuget\\packages\\microsoft.aspnetcore.http\\2.2.0\\microsoft.aspnetcore.http.2.2.0.nupkg.sha512",
+    "C:\\Users\\Аня\\.nuget\\packages\\microsoft.aspnetcore.http\\2.2.2\\microsoft.aspnetcore.http.2.2.2.nupkg.sha512",
     "C:\\Users\\Аня\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Аня\\.nuget\\packages\\microsoft.aspnetcore.http.extensions\\2.2.0\\microsoft.aspnetcore.http.extensions.2.2.0.nupkg.sha512",
     "C:\\Users\\Аня\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",

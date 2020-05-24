@@ -70,7 +70,6 @@ namespace MediaPlayer.WEBAPI.Controllers
                 return BadRequest();
             }
 
-
             await musicService.AddMusicAsync(musicDto);
 
             musicDto = await musicService.GetMusicForUpdateAsync(musicDto.Name, musicDto.Author, musicDto.Year);

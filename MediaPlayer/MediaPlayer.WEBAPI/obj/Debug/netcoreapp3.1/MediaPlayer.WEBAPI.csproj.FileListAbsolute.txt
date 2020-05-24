@@ -53,8 +53,6 @@ F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\Me
 F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MediaPlayer\MediaPlayer.WEBAPI\bin\Debug\netcoreapp3.1\MediaPlayer.BLL.pdb
 F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MediaPlayer\MediaPlayer.WEBAPI\bin\Debug\netcoreapp3.1\MediaPlayer.DAL.pdb
 F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MediaPlayer\MediaPlayer.WEBAPI\obj\Debug\netcoreapp3.1\MediaPlayer.WEBAPI.csprojAssemblyReference.cache
-F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MediaPlayer\MediaPlayer.WEBAPI\obj\Debug\netcoreapp3.1\MediaPlayer.WEBAPI.csproj.CoreCompileInputs.cache
-F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MediaPlayer\MediaPlayer.WEBAPI\obj\Debug\netcoreapp3.1\MediaPlayer.WEBAPI.MvcApplicationPartsAssemblyInfo.cache
 F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MediaPlayer\MediaPlayer.WEBAPI\obj\Debug\netcoreapp3.1\MediaPlayer.WEBAPI.AssemblyInfoInputs.cache
 F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MediaPlayer\MediaPlayer.WEBAPI\obj\Debug\netcoreapp3.1\MediaPlayer.WEBAPI.AssemblyInfo.cs
 F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MediaPlayer\MediaPlayer.WEBAPI\obj\Debug\netcoreapp3.1\MediaPlayer.WEBAPI.RazorTargetAssemblyInfo.cache
@@ -67,4 +65,6 @@ F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\Me
 F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MediaPlayer\MediaPlayer.WEBAPI\bin\Debug\netcoreapp3.1\FluentValidation.dll
 F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MediaPlayer\MediaPlayer.WEBAPI\bin\Debug\netcoreapp3.1\FluentValidation.AspNetCore.dll
 F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MediaPlayer\MediaPlayer.WEBAPI\bin\Debug\netcoreapp3.1\FluentValidation.DependencyInjectionExtensions.dll
+F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MediaPlayer\MediaPlayer.WEBAPI\obj\Debug\netcoreapp3.1\MediaPlayer.WEBAPI.csproj.CoreCompileInputs.cache
 F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MediaPlayer\MediaPlayer.WEBAPI\obj\Debug\netcoreapp3.1\MediaPlayer.WEBAPI.MvcApplicationPartsAssemblyInfo.cs
+F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MediaPlayer\MediaPlayer.WEBAPI\obj\Debug\netcoreapp3.1\MediaPlayer.WEBAPI.MvcApplicationPartsAssemblyInfo.cache

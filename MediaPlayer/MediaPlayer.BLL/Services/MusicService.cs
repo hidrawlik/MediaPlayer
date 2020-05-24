@@ -34,13 +34,6 @@ namespace MediaPlayer.BLL.Services
 
         public async Task AddMusicAsync(MusicCUDTO musicCreateDTO)
         {
-            var result = validationRules.Validate(musicCreateDTO);
-
-            if (!result.IsValid)
-            {
-                throw new Exception(result.ToString());
-            }
-
             await CheckGenreAsync(musicCreateDTO.Genre);
 
             var music = mapper.Map<Music>(musicCreateDTO);
@@ -107,13 +100,6 @@ namespace MediaPlayer.BLL.Services
 
         public async Task UpdateMusicAsync(MusicCUDTO musicDTO)
         {
-            var result = validationRules.Validate(musicDTO);
-
-            if (!result.IsValid)
-            {
-                throw new Exception(result.ToString());
-            }
-
             await CheckGenreAsync(musicDTO.Genre);
 
             var music = mapper.Map<Music>(musicDTO);
