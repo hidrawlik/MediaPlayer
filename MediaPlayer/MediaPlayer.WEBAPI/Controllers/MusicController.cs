@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MediaPlayer.BLL.Interfaces.IServices;
 using MediaPlayer.BLL.DTOs.MusicDTO;
+using MediaPlayer.DAL.Entities;
 
 namespace MediaPlayer.WEBAPI.Controllers
 {
@@ -62,27 +63,30 @@ namespace MediaPlayer.WEBAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<MusicViewDTO>> Add(MusicCUDTO musicDto)
+        public async Task<ActionResult<MusicCUDTO>> Add([FromBody]MusicCUDTO musicDto)
         {
             if (musicDto == null)
             {
                 return BadRequest();
             }
+
+
             await musicService.AddMusicAsync(musicDto);
+
             musicDto = await musicService.GetMusicForUpdateAsync(musicDto.Name, musicDto.Author, musicDto.Year);
 
-            return Ok(musicDto);
+            return CreatedAtAction(nameof(GetForUpdate), new { id = musicDto.Id }, musicDto);
         }
 
         [HttpPut]
-        public async Task<ActionResult<MusicCUDTO>> Update(MusicCUDTO musicDto)
+        public async Task<ActionResult<MusicCUDTO>> Update([FromBody]MusicCUDTO musicDto)
         {
             if (musicDto == null)
             {
                 return BadRequest();
             }
 
-            if (await musicService.GetMusicForViewAsync(musicDto.Id) == null)
+            if (!await musicService.IsAnyMusicDefinedAsync(musicDto.Id))
             {
                 return NotFound();
             }
@@ -94,7 +98,7 @@ namespace MediaPlayer.WEBAPI.Controllers
         [HttpDelete("{Id}")]
         public async Task<ActionResult<MusicViewDTO>> Delete(int Id)
         {
-            MusicViewDTO musicDto = musicService.GetMusicForViewAsync(Id).Result;
+            MusicViewDTO musicDto = await musicService.GetMusicForViewAsync(Id);
 
             if (musicDto == null)
             {
@@ -102,7 +106,7 @@ namespace MediaPlayer.WEBAPI.Controllers
             }
 
             await musicService.DeleteMusicAsync(musicDto);
-            return Ok(musicDto);
+            return NoContent();
         }
     }
 }

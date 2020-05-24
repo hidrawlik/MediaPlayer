@@ -8,18 +8,18 @@ namespace MediaPlayer.BLL.Interfaces.IServices
 {
     public interface IAlbumService
     {
-        Task<IEnumerable<AlbumDTO>> GetAllAlbums();
+        Task<IEnumerable<AlbumDTO>> GetAllAlbumsAsync();
 
-        Task<AlbumDTO> GetAlbum(int Id);
+        Task<AlbumDTO> GetAlbumAsync(int Id);
 
-        Task AddAlbum(AlbumDTO albumDTO);
+        Task AddAlbumAsync(AlbumDTO albumDTO);
 
-        Task UpdateAlbum(AlbumDTO albumDTO);
+        Task UpdateAlbumAsync(AlbumDTO albumDTO);
 
-        Task DeleteAlbum(AlbumDTO albumDTO);
+        Task DeleteAlbumAsync(AlbumDTO albumDTO);
 
-        Task<AlbumDTO> GetAlbum(string Name, string Author);
+        Task<AlbumDTO> GetAlbumAsync(string Name, string Author);
 
-        Task<IEnumerable<AlbumDTO>> GetAuthorAlbums(string Author);
+        Task<IEnumerable<AlbumDTO>> GetAuthorAlbumsAsync(string Author);
     }
 }

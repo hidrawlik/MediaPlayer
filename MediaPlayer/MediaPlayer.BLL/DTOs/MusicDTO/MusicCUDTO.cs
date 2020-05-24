@@ -12,7 +12,7 @@ namespace MediaPlayer.BLL.DTOs.MusicDTO
 
         public void SetAgeRestrictions(bool value)
         {
-            _forSixteenYearOlds = value;
+            ForSixteenYearOlds = value;
         }
     }
 }

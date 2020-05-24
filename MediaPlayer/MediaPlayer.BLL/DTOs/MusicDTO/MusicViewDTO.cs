@@ -18,6 +18,11 @@ namespace MediaPlayer.BLL.DTOs.MusicDTO
             {
                 return _forSixteenYearOlds; 
             }
+
+            protected set
+            {
+                _forSixteenYearOlds = value;
+            }
         }
     }
 }

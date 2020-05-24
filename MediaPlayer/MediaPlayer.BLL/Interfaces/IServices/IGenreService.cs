@@ -8,14 +8,14 @@ namespace MediaPlayer.BLL.Interfaces.IServices
 {
     public interface IGenreService
     {
-        Task<IEnumerable<GenreDTO>> GetAll();
+        Task<IEnumerable<GenreDTO>> GetAllGenresAsync();
 
-        Task<GenreDTO> Get(int Id);
+        Task<GenreDTO> GetGenreAsync(int Id);
 
-        Task Add(GenreDTO genreDTO);
+        Task AddGenreAsync(GenreDTO genreDTO);
 
-        Task Update(GenreDTO genreDTO);
+        Task UpdateGenreAsync(GenreDTO genreDTO);
 
-        Task Delete(GenreDTO genreDTO);
+        Task DeleteGenreAsync(GenreDTO genreDTO);
     }
 }

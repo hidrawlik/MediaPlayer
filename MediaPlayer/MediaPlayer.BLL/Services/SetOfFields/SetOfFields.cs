@@ -7,11 +7,13 @@ namespace MediaPlayer.BLL.Services
 {
     public abstract class SetOfFields
     {
-        protected readonly IMapper mapper = new MapperConfiguration(cfg => cfg.AddProfile<OrganizationProfile>()).CreateMapper();
+        protected readonly IMapper mapper;
         protected readonly IUnitOfWork unitOfWork;
-        protected SetOfFields(IUnitOfWork unitOfWork)
+        protected SetOfFields(IUnitOfWork unitOfWork,
+            IMapper mapper)
         {
             this.unitOfWork = unitOfWork;
+            this.mapper = mapper;
         }
     }
 }

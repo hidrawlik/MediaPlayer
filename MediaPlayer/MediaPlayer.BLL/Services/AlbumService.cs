@@ -5,24 +5,25 @@ using MediaPlayer.BLL.Interfaces.IServices;
 using MediaPlayer.DAL.Interfaces;
 using MediaPlayer.DAL.Entities;
 using MediaPlayer.BLL.DTOs;
+using AutoMapper;
 
 namespace MediaPlayer.BLL.Services
 {
     public class AlbumService : SetOfFields, IAlbumService
     {
-        public AlbumService(IUnitOfWork unitOfWork)
-           : base(unitOfWork)
+        public AlbumService(IUnitOfWork unitOfWork, IMapper mapper)
+           : base(unitOfWork, mapper)
         {
         }
 
-        public async Task AddAlbum(AlbumDTO albumDTO)
+        public async Task AddAlbumAsync(AlbumDTO albumDTO)
         {
             var album = mapper.Map<Album>(albumDTO);
 
             await unitOfWork.AlbumRepository.Add(album);
         }
 
-        public async Task DeleteAlbum(AlbumDTO albumDTO)
+        public async Task DeleteAlbumAsync(AlbumDTO albumDTO)
         {
             var album =  await unitOfWork.AlbumRepository.Get(albumDTO.Name, albumDTO.Author);
 
@@ -42,7 +43,7 @@ namespace MediaPlayer.BLL.Services
             await unitOfWork.AlbumRepository.Delete(album);
         }
 
-        public async Task<AlbumDTO> GetAlbum(int Id)
+        public async Task<AlbumDTO> GetAlbumAsync(int Id)
         {
             var album = await unitOfWork.AlbumRepository.Get(Id);
 
@@ -54,7 +55,7 @@ namespace MediaPlayer.BLL.Services
             return mapper.Map<AlbumDTO>(album);
         }
 
-        public async Task<AlbumDTO> GetAlbum(string Name, string Author)
+        public async Task<AlbumDTO> GetAlbumAsync(string Name, string Author)
         {
             var album = await unitOfWork.AlbumRepository.Get(Name, Author);
 
@@ -66,7 +67,7 @@ namespace MediaPlayer.BLL.Services
             return mapper.Map<AlbumDTO>(album);
         }
 
-        public async Task<IEnumerable<AlbumDTO>> GetAllAlbums()
+        public async Task<IEnumerable<AlbumDTO>> GetAllAlbumsAsync()
         {
             var albums = await unitOfWork.AlbumRepository.GetAll();
 
@@ -78,7 +79,7 @@ namespace MediaPlayer.BLL.Services
             return mapper.Map<IEnumerable<AlbumDTO>>(albums);
         }
 
-        public async Task<IEnumerable<AlbumDTO>> GetAuthorAlbums(string Author)
+        public async Task<IEnumerable<AlbumDTO>> GetAuthorAlbumsAsync(string Author)
         {
             if (Author == null)
             {
@@ -95,7 +96,7 @@ namespace MediaPlayer.BLL.Services
             return mapper.Map<IEnumerable<AlbumDTO>>(albums);
         }
 
-        public async Task UpdateAlbum(AlbumDTO albumDTO)
+        public async Task UpdateAlbumAsync(AlbumDTO albumDTO)
         {
             var album = mapper.Map<Album>(albumDTO);
 

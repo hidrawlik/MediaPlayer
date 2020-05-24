@@ -1,15 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using MediaPlayer.DAL;
 using MediaPlayer.DAL.EFCoreContexts;
 using MediaPlayer.DAL.Interfaces;
@@ -24,6 +17,8 @@ using Microsoft.AspNetCore.Identity;
 using FluentValidation;
 using MediaPlayer.BLL.DTOs.MusicDTO;
 using MediaPlayer.BLL.Validation;
+using AutoMapper;
+using MediaPlayer.BLL;
 
 namespace MediaPlayer.WEBAPI
 {
@@ -40,7 +35,7 @@ namespace MediaPlayer.WEBAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<MediaDBContext>(opts => opts.UseSqlServer(MyConnection.Connection));
-            
+
             services.AddControllers();
 
             services.AddIdentity<User, IdentityRole>()
@@ -62,6 +57,8 @@ namespace MediaPlayer.WEBAPI
             services.AddTransient<IAlbumService, AlbumService>();
             services.AddTransient<IGenreService, GenreService>();
             #endregion
+
+            services.AddAutoMapper(typeof (OrganizationProfile));
 
             #region DTO Validators
             services.AddTransient<IValidator<MusicCUDTO>, MusicCUDTOValidator>();

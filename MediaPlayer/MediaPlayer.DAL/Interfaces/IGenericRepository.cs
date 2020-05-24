@@ -7,14 +7,16 @@ namespace MediaPlayer.DAL.Interfaces
 {
     public interface IGenericRepository<TEntity> where TEntity : class, IEntity
     {
-        Task<IEnumerable<TEntity>> GetAll();
+        Task Add(TEntity entity);
+
+        Task<bool> Any(int Id);
+        
+        Task Delete(TEntity entity);
 
         Task<TEntity> Get(int Id);
 
-        Task Add(TEntity entity);
+        Task<IEnumerable<TEntity>> GetAll();
 
         Task Update(TEntity entity);
-
-        Task Delete(TEntity entity);
     }
 }

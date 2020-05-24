@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using MediaPlayer.BLL.DTOs.MusicDTO;
+using MediaPlayer.DAL.Entities;
 
 namespace MediaPlayer.BLL.Interfaces.IServices
 {
     public interface IMusicService
     {
+        Task<bool> IsAnyMusicDefinedAsync(int Id);
+
         Task<IEnumerable<MusicViewDTO>> GetAllMusicAsync();
 
         Task<MusicViewDTO> GetMusicForViewAsync(int? Id);

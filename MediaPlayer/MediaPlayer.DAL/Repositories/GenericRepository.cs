@@ -23,6 +23,11 @@ namespace MediaPlayer.DAL.Repositories
             await db.SaveChangesAsync();
         }
 
+        public async Task<bool> Any(int Id)
+        {
+            return await db.Set<TEntity>().AnyAsync(e => e.Id == Id);
+        }
+
         public async Task Delete(TEntity entity)
         {
             db.Set<TEntity>().Remove(entity);
@@ -41,9 +46,6 @@ namespace MediaPlayer.DAL.Repositories
 
         public async Task Update(TEntity entity)
         {
-            db.Entry(entity).State = EntityState.Detached;
-            await db.SaveChangesAsync();
-
             db.Set<TEntity>().Update(entity);
             await db.SaveChangesAsync();
         }
