@@ -21,6 +21,9 @@ using AutoMapper;
 using MediaPlayer.BLL;
 using FluentValidation.AspNetCore;
 using MediaPlayer.WEBAPI.Filters;
+using Microsoft.OpenApi.Models;
+using System;
+using System.Xml.XPath;
 
 namespace MediaPlayer.WEBAPI
 {
@@ -75,6 +78,25 @@ namespace MediaPlayer.WEBAPI
 
             #endregion
 
+
+            #region Swagger
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "MediaPlayer API",
+                    Description = "ASP.NET Core Web API"
+                });
+
+                c.IncludeXmlComments(GetXmlCommentsPath());
+            });
+            #endregion
+        }
+
+        private string GetXmlCommentsPath()
+        {
+            return string.Format(@"{0}\SwaggerTest.XML", AppDomain.CurrentDomain.BaseDirectory);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -83,6 +105,13 @@ namespace MediaPlayer.WEBAPI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                app.UseSwagger();
+
+                app.UseSwaggerUI(c =>
+                    {
+                        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My MediaPlayer API V1");
+                    });
             }
 
             app.UseHttpsRedirection();

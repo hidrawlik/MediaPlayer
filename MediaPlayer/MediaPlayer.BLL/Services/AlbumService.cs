@@ -32,25 +32,12 @@ namespace MediaPlayer.BLL.Services
                 throw new Exception("Not found");
             }
 
-            var musicCollection = await unitOfWork.MusicRepository.GetByAlbumId(album.Id);
-
-            foreach(var music in musicCollection)
-            {
-                music.AlbumId = null;
-                await unitOfWork.MusicRepository.Update(music);
-            }
-
             await unitOfWork.AlbumRepository.Delete(album);
         }
 
         public async Task<AlbumDTO> GetAlbumAsync(int Id)
         {
             var album = await unitOfWork.AlbumRepository.Get(Id);
-
-            if (album == null)
-            {
-                throw new Exception("Not found");
-            }
 
             return mapper.Map<AlbumDTO>(album);
         }
@@ -70,11 +57,6 @@ namespace MediaPlayer.BLL.Services
         public async Task<IEnumerable<AlbumDTO>> GetAllAlbumsAsync()
         {
             var albums = await unitOfWork.AlbumRepository.GetAll();
-
-            if (albums == null)
-            {
-                throw new Exception("Not found");
-            }
 
             return mapper.Map<IEnumerable<AlbumDTO>>(albums);
         }

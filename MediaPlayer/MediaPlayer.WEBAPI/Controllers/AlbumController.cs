@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MediaPlayer.BLL.DTOs;
+using MediaPlayer.BLL.Interfaces.IServices;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MediaPlayer.WEBAPI.Controllers
@@ -10,21 +12,48 @@ namespace MediaPlayer.WEBAPI.Controllers
     [ApiController]
     public class AlbumController : ControllerBase
     {
-        // GET: api/<controller>
+        private readonly IAlbumService albumService;
+
+        public AlbumController(IAlbumService albumService)
+        {
+            this.albumService = albumService;
+        }
+
+        /// <summary>
+        /// Get all
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<ActionResult<IEnumerable<AlbumDTO>>> GetAll()
         {
-            return new string[] { "value1", "value2" };
+            var albumDTOList = await albumService.GetAllAlbumsAsync();
+
+            if (albumDTOList == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(albumDTOList);
         }
 
-        // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        /// <summary>
+        /// Get by Id
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        [HttpGet("{Id}")]
+        public async Task<ActionResult<AlbumDTO>> Get(int Id)
         {
-            return "value";
+            var albumDTO = await albumService.GetAlbumAsync(Id);
+
+            if (albumDTO == null)
+            {
+                return NotFound();
+            }
+
+            return albumDTO;
         }
 
-        // POST api/<controller>
         [HttpPost]
         public void Post([FromBody]string value)
         {
@@ -36,10 +65,23 @@ namespace MediaPlayer.WEBAPI.Controllers
         {
         }
 
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        /// <summary>
+        /// Delete by Id
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        [HttpDelete("{Id}")]
+        public async Task<ActionResult<AlbumDTO>> Delete(int Id)
         {
+            var albumDTO = await albumService.GetAlbumAsync(Id);
+
+            if(albumDTO == null)
+            {
+                return NotFound();
+            }
+
+            await albumService.DeleteAlbumAsync(albumDTO);
+            return NoContent();
         }
     }
 }

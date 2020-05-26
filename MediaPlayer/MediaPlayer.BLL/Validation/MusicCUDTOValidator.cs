@@ -9,24 +9,26 @@ namespace MediaPlayer.BLL.Validation
         public MusicCUDTOValidator()
         {
             RuleFor(e => e.Name)
-                .NotEmpty().WithMessage("The Name cannot be empty")
-                .MaximumLength(50).WithMessage("The Name cannot be longer than 50 characters");
+                .NotEmpty()
+                .MinimumLength(2)
+                .MaximumLength(50);
 
             RuleFor(e => e.Author)
-                .NotEmpty().WithMessage("The Author's name  cannot be empty")
-                .Length(2, 50).WithMessage("Length of Author's name must be between 2 and 50 characters");
+                .NotEmpty()
+                .Length(2, 50);
 
             RuleFor(e => e.Year)
-                .LessThanOrEqualTo(DateTime.Now.Year).WithMessage("Year must be less than or equal to " + DateTime.Now.Year)
-                .GreaterThanOrEqualTo(1970).WithMessage("Year must be greater than or equal to " + 1970);
+                .LessThanOrEqualTo(DateTime.Now.Year)
+                .GreaterThanOrEqualTo(1970);
 
             RuleFor(e => e.Genre)
-                .MinimumLength(3).WithMessage("Length must be greater than 2 characters")
-                .MaximumLength(30).WithMessage("Length must be lesser than or equal to 30 characters");
+                .NotEmpty()
+                .MinimumLength(3)
+                .MaximumLength(30);
 
             RuleFor(e => e.Album)
-                .MinimumLength(3).WithMessage("Length must be greater than 2 characters")
-                .MaximumLength(50).WithMessage("Length must be lesser than or equal to 50 characters");
+                .MinimumLength(3)
+                .MaximumLength(50);
         }
     }
 }

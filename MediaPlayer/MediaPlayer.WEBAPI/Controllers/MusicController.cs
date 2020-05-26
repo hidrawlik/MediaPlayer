@@ -21,6 +21,11 @@ namespace MediaPlayer.WEBAPI.Controllers
             this.musicService = musicService;
         }
 
+
+        /// <summary>
+        /// Get all
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MusicViewDTO>>> GetAll()
         {
@@ -34,6 +39,11 @@ namespace MediaPlayer.WEBAPI.Controllers
             return Ok(musicsDto);
         }
 
+        /// <summary>
+        /// Get by Id
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [Route("{Id}")]
         [HttpGet]
         public async Task<ActionResult<MusicViewDTO>> GetForView(int Id)
@@ -48,6 +58,12 @@ namespace MediaPlayer.WEBAPI.Controllers
             return Ok(musicDto);
         }
 
+
+        /// <summary>
+        /// Get for Update by Id
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [Route("update/{Id}")]
         [HttpGet]
         public async Task<ActionResult<MusicCUDTO>> GetForUpdate(int Id)
@@ -62,6 +78,12 @@ namespace MediaPlayer.WEBAPI.Controllers
             return Ok(musicDto);
         }
 
+
+        /// <summary>
+        /// Add music
+        /// </summary>
+        /// <param name="musicDto"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<MusicCUDTO>> Add([FromBody]MusicCUDTO musicDto)
         {
@@ -77,6 +99,11 @@ namespace MediaPlayer.WEBAPI.Controllers
             return CreatedAtAction(nameof(GetForUpdate), new { id = musicDto.Id }, musicDto);
         }
 
+        /// <summary>
+        /// Update music
+        /// </summary>
+        /// <param name="musicDto"></param>
+        /// <returns></returns>
         [HttpPut]
         public async Task<ActionResult<MusicCUDTO>> Update([FromBody]MusicCUDTO musicDto)
         {
@@ -94,6 +121,12 @@ namespace MediaPlayer.WEBAPI.Controllers
             return Ok(musicDto);
         }
 
+
+        /// <summary>
+        /// Delete by Id
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [HttpDelete("{Id}")]
         public async Task<ActionResult<MusicViewDTO>> Delete(int Id)
         {
