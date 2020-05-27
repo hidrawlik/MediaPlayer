@@ -23,9 +23,9 @@ namespace MediaPlayer.BLL.Services
             await unitOfWork.GenreRepository.Add(genre);
         }
 
-        public async Task DeleteGenreAsync(GenreDTO genreDTO)
+        public async Task DeleteGenreAsync(int Id)
         {
-            var genre = mapper.Map<Genre>(genreDTO);
+            var genre = await unitOfWork.GenreRepository.Get(Id);
 
             await unitOfWork.GenreRepository.Delete(genre);
         }
@@ -33,6 +33,13 @@ namespace MediaPlayer.BLL.Services
         public async Task<GenreDTO> GetGenreAsync(int Id)
         {
             var genre = await unitOfWork.GenreRepository.Get(Id);
+
+            return mapper.Map<GenreDTO>(genre);
+        }
+
+        public async Task<GenreDTO> GetGenreAsync(string Name)
+        {
+            var genre = await unitOfWork.GenreRepository.GetByName(Name);
 
             return mapper.Map<GenreDTO>(genre);
         }
@@ -49,6 +56,11 @@ namespace MediaPlayer.BLL.Services
             var genre = mapper.Map<Genre>(genreDTO);
 
             await unitOfWork.GenreRepository.Update(genre);
+        }
+
+        public async Task<bool> IsAnyGenreDefinedAsync(int Id)
+        {
+            return await unitOfWork.GenreRepository.Any(Id);
         }
     }
 }

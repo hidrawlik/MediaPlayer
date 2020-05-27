@@ -12,10 +12,14 @@ namespace MediaPlayer.BLL.Interfaces.IServices
 
         Task<GenreDTO> GetGenreAsync(int Id);
 
+        Task<GenreDTO> GetGenreAsync(string Name);
+
         Task AddGenreAsync(GenreDTO genreDTO);
 
         Task UpdateGenreAsync(GenreDTO genreDTO);
 
-        Task DeleteGenreAsync(GenreDTO genreDTO);
+        Task DeleteGenreAsync(int Id);
+
+        Task<bool> IsAnyGenreDefinedAsync(int Id);
     }
 }

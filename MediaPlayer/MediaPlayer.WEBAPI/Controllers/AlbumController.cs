@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MediaPlayer.BLL.DTOs;
 using MediaPlayer.BLL.Interfaces.IServices;
+using MediaPlayer.DAL.UnitOfWork;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MediaPlayer.WEBAPI.Controllers
@@ -54,15 +55,49 @@ namespace MediaPlayer.WEBAPI.Controllers
             return albumDTO;
         }
 
+        /// <summary>
+        /// Create album
+        /// </summary>
+        /// <param name="albumDTO"></param>
+        /// <returns></returns>
         [HttpPost]
-        public void Post([FromBody]string value)
+        public async Task<ActionResult<AlbumDTO>> Post([FromBody]AlbumDTO albumDTO)
         {
+            if (albumDTO == null)
+            {
+                return BadRequest();
+            }
+
+            await albumService.AddAlbumAsync(albumDTO);
+
+            albumDTO = await albumService.GetAlbumAsync(albumDTO.Name, albumDTO.Author);
+
+            return CreatedAtAction(nameof(Get), new {id = albumDTO.Id }, albumDTO);
         }
 
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        /// <summary>
+        /// Update by Id
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <param name="albumDTO"></param>
+        /// <returns></returns>
+        [HttpPut("{Id}")]
+        public async Task<ActionResult<AlbumDTO>> Put(int Id, [FromBody]AlbumDTO albumDTO)
         {
+            if (albumDTO == null)
+            {
+                return BadRequest();
+            }
+
+            if(! await albumService.IsAnyAlbumDefinedAsync(Id))
+            {
+                return NotFound();
+            }
+
+            albumDTO.Id = Id;
+
+            await albumService.UpdateAlbumAsync(albumDTO);
+            return Ok(albumDTO);
         }
 
         /// <summary>
@@ -73,14 +108,12 @@ namespace MediaPlayer.WEBAPI.Controllers
         [HttpDelete("{Id}")]
         public async Task<ActionResult<AlbumDTO>> Delete(int Id)
         {
-            var albumDTO = await albumService.GetAlbumAsync(Id);
-
-            if(albumDTO == null)
+            if(!await albumService.IsAnyAlbumDefinedAsync(Id))
             {
                 return NotFound();
             }
 
-            await albumService.DeleteAlbumAsync(albumDTO);
+            await albumService.DeleteAlbumAsync(Id);
             return NoContent();
         }
     }

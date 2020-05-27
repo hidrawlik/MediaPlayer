@@ -24,6 +24,7 @@ using MediaPlayer.WEBAPI.Filters;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Xml.XPath;
+using MediaPlayer.BLL.DTOs;
 
 namespace MediaPlayer.WEBAPI
 {
@@ -74,6 +75,8 @@ namespace MediaPlayer.WEBAPI
 
             #region DTO Validators
             services.AddTransient<IValidator<MusicCUDTO>, MusicCUDTOValidator>();
+            services.AddTransient<IValidator<GenreDTO>, GenreDTOValidator>();
+            services.AddTransient<IValidator<AlbumDTO>, AlbumDTOValidator>();
             #endregion
 
             #endregion

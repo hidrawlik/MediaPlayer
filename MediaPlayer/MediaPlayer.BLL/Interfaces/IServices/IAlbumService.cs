@@ -16,10 +16,12 @@ namespace MediaPlayer.BLL.Interfaces.IServices
 
         Task UpdateAlbumAsync(AlbumDTO albumDTO);
 
-        Task DeleteAlbumAsync(AlbumDTO albumDTO);
+        Task DeleteAlbumAsync(int Id);
 
         Task<AlbumDTO> GetAlbumAsync(string Name, string Author);
 
         Task<IEnumerable<AlbumDTO>> GetAuthorAlbumsAsync(string Author);
+
+        Task<bool> IsAnyAlbumDefinedAsync(int Id);
     }
 }

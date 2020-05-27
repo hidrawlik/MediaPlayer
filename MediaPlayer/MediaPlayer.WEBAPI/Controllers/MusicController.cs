@@ -130,7 +130,7 @@ namespace MediaPlayer.WEBAPI.Controllers
         [HttpDelete("{Id}")]
         public async Task<ActionResult<MusicViewDTO>> Delete(int Id)
         {
-            MusicViewDTO musicDto = await musicService.GetMusicForViewAsync(Id);
+             var musicDto = await musicService.GetMusicForViewAsync(Id);
 
             if (musicDto == null)
             {

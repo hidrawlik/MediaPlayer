@@ -23,14 +23,9 @@ namespace MediaPlayer.BLL.Services
             await unitOfWork.AlbumRepository.Add(album);
         }
 
-        public async Task DeleteAlbumAsync(AlbumDTO albumDTO)
+        public async Task DeleteAlbumAsync(int Id)
         {
-            var album =  await unitOfWork.AlbumRepository.Get(albumDTO.Name, albumDTO.Author);
-
-            if (album == null)
-            {
-                throw new Exception("Not found");
-            }
+            var album = await unitOfWork.AlbumRepository.Get(Id);
 
             await unitOfWork.AlbumRepository.Delete(album);
         }
@@ -45,11 +40,6 @@ namespace MediaPlayer.BLL.Services
         public async Task<AlbumDTO> GetAlbumAsync(string Name, string Author)
         {
             var album = await unitOfWork.AlbumRepository.Get(Name, Author);
-
-            if (album == null)
-            {
-                throw new Exception("Not found");
-            }
 
             return mapper.Map<AlbumDTO>(album);
         }
@@ -76,6 +66,11 @@ namespace MediaPlayer.BLL.Services
             }
 
             return mapper.Map<IEnumerable<AlbumDTO>>(albums);
+        }
+
+        public async Task<bool> IsAnyAlbumDefinedAsync(int Id)
+        {
+            return await unitOfWork.AlbumRepository.Any(Id);
         }
 
         public async Task UpdateAlbumAsync(AlbumDTO albumDTO)
