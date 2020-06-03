@@ -101,10 +101,11 @@
             <param name="musicDto"></param>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.MusicController.Update(MediaPlayer.BLL.DTOs.MusicDTO.MusicCUDTO)">
+        <member name="M:MediaPlayer.WEBAPI.Controllers.MusicController.Update(System.Nullable{System.Int32},MediaPlayer.BLL.DTOs.MusicDTO.MusicCUDTO)">
             <summary>
             Update music
             </summary>
+            <param name="Id"></param>
             <param name="musicDto"></param>
             <returns></returns>
         </member>
@@ -142,7 +143,7 @@
             <param name="userDTO"></param>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.UserController.Put(System.String,MediaPlayer.BLL.DTOs.UserDTO.UserEditDTO)">
+        <member name="M:MediaPlayer.WEBAPI.Controllers.UserController.Put(System.String,MediaPlayer.BLL.DTOs.UserDTO.UserUpdateDTO)">
             <summary>
             Update user
             </summary>

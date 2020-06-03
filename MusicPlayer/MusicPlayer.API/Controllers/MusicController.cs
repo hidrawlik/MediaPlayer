@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MediaPlayer.BLL.Interfaces.IServices;
 using MediaPlayer.BLL.DTOs.MusicDTO;
-using MediaPlayer.DAL.Entities;
 
 namespace MediaPlayer.WEBAPI.Controllers
 {
@@ -102,11 +98,17 @@ namespace MediaPlayer.WEBAPI.Controllers
         /// <summary>
         /// Update music
         /// </summary>
+        /// <param name="Id"></param>
         /// <param name="musicDto"></param>
         /// <returns></returns>
-        [HttpPut]
-        public async Task<ActionResult<MusicCUDTO>> Update([FromBody]MusicCUDTO musicDto)
+        [HttpPut("{Id}")]
+        public async Task<ActionResult<MusicCUDTO>> Update(int? Id, [FromBody]MusicCUDTO musicDto)
         {
+            if (Id == null)
+            {
+                return BadRequest();
+            }
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -117,7 +119,7 @@ namespace MediaPlayer.WEBAPI.Controllers
                 return NotFound();
             }
 
-            await musicService.UpdateMusicAsync(musicDto);
+            await musicService.UpdateMusicAsync(Id.Value, musicDto);
             return Ok(musicDto);
         }
 

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MediaPlayer.BLL.Validation
 {
-    public class UserEditDTOValidator : AbstractValidator<UserEditDTO>
+    public class UserEditDTOValidator : AbstractValidator<UserUpdateDTO>
     {
         public UserEditDTOValidator()
         {
@@ -19,13 +19,13 @@ namespace MediaPlayer.BLL.Validation
                 .NotEmpty()
                 .EmailAddress();
 
-            RuleFor(e => e.Password)
+            RuleFor(e => e.NewPassword)
                 .NotEmpty()
                 .MinimumLength(6);
 
             RuleFor(e => e.ConfirmPassword)
                 .NotNull()
-                .Equal(e => e.Password);
+                .Equal(e => e.NewPassword);
 
             RuleFor(e => e.FirstName)
                 .MinimumLength(2)
@@ -36,14 +36,17 @@ namespace MediaPlayer.BLL.Validation
                 .MaximumLength(30);
 
             RuleFor(e => e.DateOfBirth.Year)
+                .NotNull()
                 .LessThanOrEqualTo(DateTime.Now.Year)
                 .GreaterThanOrEqualTo(1900);
 
             RuleFor(e => e.DateOfBirth.Month)
+                .NotNull()
                 .GreaterThanOrEqualTo(1)
                 .LessThanOrEqualTo(12);
 
             RuleFor(e => e.DateOfBirth.Day)
+                .NotNull()
                 .GreaterThanOrEqualTo(1)
                 .LessThanOrEqualTo(31);
         }

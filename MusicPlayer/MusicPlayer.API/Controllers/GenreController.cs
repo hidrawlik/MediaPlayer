@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediaPlayer.BLL.DTOs;
 using MediaPlayer.BLL.Interfaces.IServices;
-using MediaPlayer.DAL.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MediaPlayer.WEBAPI.Controllers

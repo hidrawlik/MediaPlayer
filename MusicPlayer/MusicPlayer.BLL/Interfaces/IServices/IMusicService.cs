@@ -13,9 +13,9 @@ namespace MediaPlayer.BLL.Interfaces.IServices
 
         Task<IEnumerable<MusicViewDTO>> GetAllMusicAsync();
 
-        Task<MusicViewDTO> GetMusicForViewAsync(int? Id);
+        Task<MusicViewDTO> GetMusicForViewAsync(int Id);
 
-        Task<MusicCUDTO> GetMusicForUpdateAsync(int? Id);
+        Task<MusicCUDTO> GetMusicForUpdateAsync(int Id);
 
         Task<MusicCUDTO> GetMusicForUpdateAsync(string Name, string Author, int? Year);
 
@@ -23,7 +23,7 @@ namespace MediaPlayer.BLL.Interfaces.IServices
 
         Task AddMusicAsync(MusicCUDTO musicCreateDTO);
 
-        Task UpdateMusicAsync(MusicCUDTO musicUpdateDTO);
+        Task UpdateMusicAsync(int Id, MusicCUDTO musicUpdateDTO);
         
         Task DeleteMusicAsync(MusicViewDTO musicDTO);
     }

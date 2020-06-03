@@ -4,16 +4,16 @@ using System.Text;
 
 namespace MediaPlayer.BLL.DTOs.UserDTO
 {
-    public class UserEditDTO
+    public class UserUpdateDTO
     {
-        public UserEditDTO() { }
+        public UserUpdateDTO() { }
 
-        public UserEditDTO(string Id)
+        public UserUpdateDTO(string Id)
         {
             id = Id;
         }
 
-        private readonly string id;
+        private readonly string id = "-1";
 
         public string Id
         {
@@ -25,7 +25,8 @@ namespace MediaPlayer.BLL.DTOs.UserDTO
 
         public string UserName { get; set; }
         public string Email { get; set; }
-        public string Password { get; set; }
+        public string CurrentPassword { get; set; }
+        public string NewPassword { get; set; }
         public string ConfirmPassword { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

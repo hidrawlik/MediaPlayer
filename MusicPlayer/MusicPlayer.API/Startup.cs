@@ -22,7 +22,6 @@ using MediaPlayer.BLL;
 using FluentValidation.AspNetCore;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Xml.XPath;
 using MediaPlayer.BLL.DTOs;
 using MediaPlayer.BLL.DTOs.UserDTO;
 
@@ -73,7 +72,7 @@ namespace MusicPlayer.API
 
             // Identity
             services.AddTransient<IValidator<UserCreateDTO>, UserCreateDTOValidator>();
-            services.AddTransient<IValidator<UserEditDTO>, UserEditDTOValidator>();
+            services.AddTransient<IValidator<UserUpdateDTO>, UserEditDTOValidator>();
             #endregion
 
             #region Swagger

@@ -14,12 +14,14 @@ namespace MediaPlayer.BLL
         public OrganizationProfile()
         {
             CreateMap<Music, MusicCUDTO>()
-                .ForMember(e => e.Album, opt => opt.Ignore());
+                .ForMember(e => e.Album, opt => opt.Ignore())
+                .ConstructUsing(e => new MusicCUDTO(e.Id));
 
             CreateMap<MusicCUDTO, Music>()
                 .ForMember(e => e.Album, opt => opt.Ignore());
 
             CreateMap<Music, MusicViewDTO>()
+                .ConstructUsing(e => new MusicViewDTO(e.Id))
                 .ReverseMap();
 
             CreateMap<Genre, GenreDTO>()
@@ -34,8 +36,8 @@ namespace MediaPlayer.BLL
                 .ForMember(e => e.UserName, opt => opt.MapFrom(e => e.UserName))
                 .ReverseMap();
 
-            CreateMap<User, UserEditDTO>()
-                .ConstructUsing(e => new UserEditDTO(e.Id))
+            CreateMap<User, UserUpdateDTO>()
+                .ConstructUsing(e => new UserUpdateDTO(e.Id))
                 .ReverseMap();
 
             CreateMap<User, UserViewDTO>()

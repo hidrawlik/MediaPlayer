@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediaPlayer.BLL.DTOs;
 using MediaPlayer.BLL.DTOs.UserDTO;
@@ -65,7 +63,7 @@ namespace MediaPlayer.WEBAPI.Controllers
         /// <param name="Id"></param>
         /// <returns></returns>
         [HttpGet("update/{Id}")]
-        public async Task<ActionResult<UserEditDTO>> GetForUpdate(string Id)
+        public async Task<ActionResult<UserUpdateDTO>> GetForUpdate(string Id)
         {
             if (Id == null)
             {
@@ -92,12 +90,12 @@ namespace MediaPlayer.WEBAPI.Controllers
         {
             if (!await userService.IsEmailUniqueAsync(userDTO.Email))
             {
-                ModelState.AddModelError("Email", "Email already taken");
+                ModelState.AddModelError("Email", "Email вже використовується");
             }
 
             if (!await userService.IsUserNameUniqueAsync(userDTO.UserName))
             {
-                ModelState.AddModelError("UserName", "UserName already taken");
+                ModelState.AddModelError("UserName", "Дане ім'я вже використовується");
             }
 
             if (!ModelState.IsValid)
@@ -117,11 +115,26 @@ namespace MediaPlayer.WEBAPI.Controllers
         /// <param name="userDTO"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(string id, [FromBody]UserEditDTO userDTO)
+        public async Task<ActionResult> Put(string id, [FromBody]UserUpdateDTO userDTO)
         {
-            if(id == null)
+            if (id == null || userDTO == null)
             {
                 return BadRequest();
+            }
+
+            if (!await userService.CheckPassword(id, userDTO.CurrentPassword))
+            {
+                ModelState.AddModelError("CurrentPassword", "Поточний пароль введено невірно");
+            }
+
+            if (!await userService.IsEmailUniqueAsync(userDTO.Email))
+            {
+                ModelState.AddModelError("Email", "Email вже використовується");
+            }
+
+            if (!await userService.IsUserNameUniqueAsync(userDTO.UserName))
+            {
+                ModelState.AddModelError("UserName", "Дане ім'я вже використовується");
             }
 
             if (!ModelState.IsValid)
@@ -129,8 +142,9 @@ namespace MediaPlayer.WEBAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            await userService.UpdateUserAsync(id, userDTO);
-            return Ok();
+            var result = await userService.UpdateUserAsync(id, userDTO);
+
+            return Ok(result);
         }
 
         /// <summary>

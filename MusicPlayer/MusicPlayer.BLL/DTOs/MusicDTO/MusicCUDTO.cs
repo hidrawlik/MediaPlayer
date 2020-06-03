@@ -6,7 +6,10 @@ namespace MediaPlayer.BLL.DTOs.MusicDTO
 {
     public class MusicCUDTO : MusicViewDTO
     {
-        public int Id { get; set; }
+        public MusicCUDTO() { }
+
+        public MusicCUDTO(int Id) : base(Id) { }
+
         public string Genre { get; set; }
         public string Album { get; set; }
 

@@ -11,7 +11,7 @@ namespace MediaPlayer.BLL.DTOs.UserDTO
             id = Id;
         }
 
-        private readonly string id;
+        private readonly string id = "-1";
 
         public string Id
         {

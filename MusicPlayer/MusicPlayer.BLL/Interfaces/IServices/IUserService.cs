@@ -22,12 +22,14 @@ namespace MediaPlayer.BLL.Interfaces.IServices
 
         Task<UserViewDTO> GetUserByEmailAsync(string Email);
 
-        Task<UserEditDTO> GetUserForUpdateAsync(string Id);
+        Task<UserUpdateDTO> GetUserForUpdateAsync(string Id);
 
-        Task UpdateUserAsync(string Id, UserEditDTO userDTO);
+        Task<IdentityResult> UpdateUserAsync(string Id, UserUpdateDTO userDTO);
 
-        public Task<bool> IsEmailUniqueAsync(string Email);
+        Task<bool> IsEmailUniqueAsync(string Email);
 
-        public Task<bool> IsUserNameUniqueAsync(string userName);
+        Task<bool> IsUserNameUniqueAsync(string userName);
+
+        Task<bool> CheckPassword(string UserId, string password);
     }
 }

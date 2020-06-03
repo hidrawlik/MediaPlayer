@@ -67,24 +67,29 @@ namespace MediaPlayer.BLL.Services
             return mapper.Map<UserViewDTO>(user);
         }
 
-        public async Task<UserEditDTO> GetUserForUpdateAsync(string Id)
+        public async Task<UserUpdateDTO> GetUserForUpdateAsync(string Id)
         {
             var user = await unitOfWork.UserManager.FindByIdAsync(Id);
 
-            return mapper.Map<UserEditDTO>(user);
+            return mapper.Map<UserUpdateDTO>(user);
         }
 
-        public async Task UpdateUserAsync(string Id, UserEditDTO userDTO)
+        public async Task<IdentityResult> UpdateUserAsync(string Id, UserUpdateDTO userDTO)
         {
             var user = mapper.Map<User>(userDTO);
 
             user.Id = Id;
 
-            await unitOfWork.UserManager.UpdateAsync(user); 
+            if (!string.IsNullOrEmpty(userDTO.NewPassword))
+            {
+                await unitOfWork.UserManager.ChangePasswordAsync(user, userDTO.CurrentPassword, userDTO.NewPassword);
+            }
 
-            await unitOfWork.UserManager.UpdateNormalizedEmailAsync(user);
-            
-            await unitOfWork.UserManager.UpdateNormalizedUserNameAsync(user);
+            user.NormalizedEmail = unitOfWork.UserManager.NormalizeEmail(userDTO.Email);
+
+            user.NormalizedUserName = unitOfWork.UserManager.NormalizeName(userDTO.UserName);
+
+            return await unitOfWork.UserManager.UpdateAsync(user);
         }
 
         public async Task<bool> IsEmailUniqueAsync(string Email)
@@ -107,6 +112,12 @@ namespace MediaPlayer.BLL.Services
                 return true;
             }
             return false;
+        }
+
+        public async Task<bool> CheckPassword(string UserId, string password)
+        {
+            var user = await unitOfWork.UserManager.FindByIdAsync(UserId);
+            return await unitOfWork.UserManager.CheckPasswordAsync(user, password);
         }
     }
 }
