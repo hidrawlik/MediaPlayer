@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MediaPlayer.DAL
+namespace MusicPlayer.DAL
 {
     public class MyConnection
     {

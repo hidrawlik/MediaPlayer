@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using MediaPlayer.BLL.DTOs.MusicDTO;
-using MediaPlayer.DAL.Entities;
+using MusicPlayer.BLL.DTOs;
+using MusicPlayer.DAL.Entities;
 
-namespace MediaPlayer.BLL.Interfaces.IServices
+namespace MusicPlayer.BLL.Interfaces.IServices
 {
     public interface IMusicService
     {

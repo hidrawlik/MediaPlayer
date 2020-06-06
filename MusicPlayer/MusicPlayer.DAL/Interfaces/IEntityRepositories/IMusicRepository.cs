@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using MediaPlayer.DAL.Entities;
+using MusicPlayer.DAL.Entities;
 
-namespace MediaPlayer.DAL.Interfaces.IEntityRepositories
+namespace MusicPlayer.DAL.Interfaces.IEntityRepositories
 {
     public interface IMusicRepository : IGenericRepository<Music>
     {

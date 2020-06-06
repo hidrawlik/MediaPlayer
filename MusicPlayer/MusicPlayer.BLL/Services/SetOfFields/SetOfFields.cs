@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
-using MediaPlayer.BLL.DTOs.MusicDTO;
-using MediaPlayer.DAL.Entities;
-using MediaPlayer.DAL.Interfaces;
+using MusicPlayer.DAL.Entities;
+using MusicPlayer.DAL.Interfaces;
 
-namespace MediaPlayer.BLL.Services
+namespace MusicPlayer.BLL.Services
 {
     public abstract class SetOfFields
     {

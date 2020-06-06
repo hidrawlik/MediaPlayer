@@ -2,26 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MediaPlayer.BLL.DTOs.MusicDTO
+namespace MusicPlayer.BLL.DTOs
 {
     public class MusicViewDTO
     {
-        public MusicViewDTO() { }
-
-        public MusicViewDTO(int Id)
-        {
-            id = Id;
-        }
-
-        private readonly int id = 0;
         protected bool _forSixteenYearOlds;
-
-        public int Id {
-            get
-            {
-                return id;
-            }
-        }
+       
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Author { get; set; }
         public int? Year { get; set; }

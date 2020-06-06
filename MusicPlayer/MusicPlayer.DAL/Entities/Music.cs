@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using MediaPlayer.DAL.Interfaces;
+using MusicPlayer.DAL.Interfaces;
 
-namespace MediaPlayer.DAL.Entities
+namespace MusicPlayer.DAL.Entities
 {
     public partial class Music : IEntity
     {

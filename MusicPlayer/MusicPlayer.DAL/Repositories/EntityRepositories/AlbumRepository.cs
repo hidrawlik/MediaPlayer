@@ -1,6 +1,6 @@
-﻿using MediaPlayer.DAL.EFCoreContexts;
-using MediaPlayer.DAL.Entities;
-using MediaPlayer.DAL.Interfaces.IEntityRepositories;
+﻿using MusicPlayer.DAL.EFCoreContexts;
+using MusicPlayer.DAL.Entities;
+using MusicPlayer.DAL.Interfaces.IEntityRepositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MediaPlayer.DAL.Repositories.EntityRepositories
+namespace MusicPlayer.DAL.Repositories.EntityRepositories
 {
     public class AlbumRepository : GenericRepository<Album>, IAlbumRepository
     {

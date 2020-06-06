@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MediaPlayer.BLL.Interfaces.IServices;
-using MediaPlayer.BLL.DTOs.MusicDTO;
+using MusicPlayer.BLL.Interfaces.IServices;
+using MusicPlayer.BLL.DTOs;
 
-namespace MediaPlayer.WEBAPI.Controllers
+namespace MusicPlayer.WEBAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MusicController : ControllerBase
+    public class MusicController : Controller
     {
         private readonly IMusicService musicService;
 

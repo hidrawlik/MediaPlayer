@@ -1,13 +1,7 @@
 ﻿using FluentValidation;
-using MediaPlayer.BLL.DTOs;
-using MediaPlayer.BLL.DTOs.UserDTO;
-using MediaPlayer.BLL.Interfaces.IServices;
-using MediaPlayer.BLL.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using MusicPlayer.BLL.DTOs;
 
-namespace MediaPlayer.BLL.Validation
+namespace MusicPlayer.BLL.Validation
 {
     public class UserCreateDTOValidator : AbstractValidator<UserCreateDTO>
     {

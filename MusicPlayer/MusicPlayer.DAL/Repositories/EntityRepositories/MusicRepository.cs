@@ -1,12 +1,12 @@
-﻿using MediaPlayer.DAL.EFCoreContexts;
-using MediaPlayer.DAL.Interfaces.IEntityRepositories;
-using MediaPlayer.DAL.Entities;
+﻿using MusicPlayer.DAL.EFCoreContexts;
+using MusicPlayer.DAL.Interfaces.IEntityRepositories;
+using MusicPlayer.DAL.Entities;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
-namespace MediaPlayer.DAL.Repositories.EntityRepositories
+namespace MusicPlayer.DAL.Repositories.EntityRepositories
 {
     public class MusicRepository : GenericRepository<Music>, IMusicRepository
     {

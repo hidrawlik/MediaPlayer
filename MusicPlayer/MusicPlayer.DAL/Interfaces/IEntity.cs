@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MediaPlayer.DAL.Interfaces
+namespace MusicPlayer.DAL.Interfaces
 {
     public interface IEntity
     {

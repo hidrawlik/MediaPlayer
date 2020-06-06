@@ -1,14 +1,14 @@
 ﻿using FluentValidation;
-using MediaPlayer.BLL.DTOs.UserDTO;
+using MusicPlayer.BLL.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MediaPlayer.BLL.Validation
+namespace MusicPlayer.BLL.Validation
 {
-    public class UserEditDTOValidator : AbstractValidator<UserUpdateDTO>
+    public class UserUpdateDTOValidator : AbstractValidator<UserUpdateDTO>
     {
-        public UserEditDTOValidator()
+        public UserUpdateDTOValidator()
         {
             RuleFor(e => e.UserName)
                 .NotEmpty()

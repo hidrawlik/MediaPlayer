@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using MediaPlayer.DAL.Entities;
-using MediaPlayer.DAL.Interfaces;
-using MediaPlayer.DAL.Interfaces.IEntityRepositories;
+using MusicPlayer.DAL.Entities;
+using MusicPlayer.DAL.Interfaces;
+using MusicPlayer.DAL.Interfaces.IEntityRepositories;
 using Microsoft.AspNetCore.Identity;
 
-namespace MediaPlayer.DAL.UnitOfWork
+namespace MusicPlayer.DAL.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using MediaPlayer.DAL.EFCoreContexts;
-using MediaPlayer.DAL.Interfaces;
+using MusicPlayer.DAL.EFCoreContexts;
+using MusicPlayer.DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace MediaPlayer.DAL.Repositories
+namespace MusicPlayer.DAL.Repositories
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class, IEntity
     {

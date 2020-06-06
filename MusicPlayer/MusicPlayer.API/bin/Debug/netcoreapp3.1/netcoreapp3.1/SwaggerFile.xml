@@ -4,27 +4,27 @@
         <name>MusicPlayer.API</name>
     </assembly>
     <members>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.AlbumController.GetAll">
+        <member name="M:MusicPlayer.WEBAPI.Controllers.AlbumController.GetAll">
             <summary>
             Get all
             </summary>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.AlbumController.Get(System.Int32)">
+        <member name="M:MusicPlayer.WEBAPI.Controllers.AlbumController.Get(System.Int32)">
             <summary>
             Get by Id
             </summary>
             <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.AlbumController.Post(MediaPlayer.BLL.DTOs.AlbumDTO)">
+        <member name="M:MusicPlayer.WEBAPI.Controllers.AlbumController.Post(MusicPlayer.BLL.DTOs.AlbumDTO)">
             <summary>
             Create album
             </summary>
             <param name="albumDTO"></param>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.AlbumController.Put(System.Int32,MediaPlayer.BLL.DTOs.AlbumDTO)">
+        <member name="M:MusicPlayer.WEBAPI.Controllers.AlbumController.Put(System.Int32,MusicPlayer.BLL.DTOs.AlbumDTO)">
             <summary>
             Update by Id
             </summary>
@@ -32,34 +32,34 @@
             <param name="albumDTO"></param>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.AlbumController.Delete(System.Int32)">
+        <member name="M:MusicPlayer.WEBAPI.Controllers.AlbumController.Delete(System.Int32)">
             <summary>
             Delete by Id
             </summary>
             <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.GenreController.GetAll">
+        <member name="M:MusicPlayer.WEBAPI.Controllers.GenreController.GetAll">
             <summary>
             Get All
             </summary>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.GenreController.Get(System.Int32)">
+        <member name="M:MusicPlayer.WEBAPI.Controllers.GenreController.Get(System.Int32)">
             <summary>
             Get by Id
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.GenreController.Post(MediaPlayer.BLL.DTOs.GenreDTO)">
+        <member name="M:MusicPlayer.WEBAPI.Controllers.GenreController.Post(MusicPlayer.BLL.DTOs.GenreDTO)">
             <summary>
             Create genre
             </summary>
             <param name="genreDTO"></param>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.GenreController.Put(System.Int32,MediaPlayer.BLL.DTOs.GenreDTO)">
+        <member name="M:MusicPlayer.WEBAPI.Controllers.GenreController.Put(System.Int32,MusicPlayer.BLL.DTOs.GenreDTO)">
             <summary>
             Update by Id
             </summary>
@@ -67,41 +67,41 @@
             <param name="genreDTO"></param>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.GenreController.Delete(System.Int32)">
+        <member name="M:MusicPlayer.WEBAPI.Controllers.GenreController.Delete(System.Int32)">
             <summary>
             Delete by Id
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.MusicController.GetAll">
+        <member name="M:MusicPlayer.WEBAPI.Controllers.MusicController.GetAll">
             <summary>
             Get all
             </summary>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.MusicController.GetForView(System.Int32)">
+        <member name="M:MusicPlayer.WEBAPI.Controllers.MusicController.GetForView(System.Int32)">
             <summary>
             Get by Id
             </summary>
             <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.MusicController.GetForUpdate(System.Int32)">
+        <member name="M:MusicPlayer.WEBAPI.Controllers.MusicController.GetForUpdate(System.Int32)">
             <summary>
             Get for Update by Id
             </summary>
             <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.MusicController.Add(MediaPlayer.BLL.DTOs.MusicDTO.MusicCUDTO)">
+        <member name="M:MusicPlayer.WEBAPI.Controllers.MusicController.Add(MusicPlayer.BLL.DTOs.MusicCUDTO)">
             <summary>
             Add music
             </summary>
             <param name="musicDto"></param>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.MusicController.Update(System.Nullable{System.Int32},MediaPlayer.BLL.DTOs.MusicDTO.MusicCUDTO)">
+        <member name="M:MusicPlayer.WEBAPI.Controllers.MusicController.Update(System.Nullable{System.Int32},MusicPlayer.BLL.DTOs.MusicCUDTO)">
             <summary>
             Update music
             </summary>
@@ -109,41 +109,41 @@
             <param name="musicDto"></param>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.MusicController.Delete(System.Int32)">
+        <member name="M:MusicPlayer.WEBAPI.Controllers.MusicController.Delete(System.Int32)">
             <summary>
             Delete by Id
             </summary>
             <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.UserController.Get">
+        <member name="M:MusicPlayer.WEBAPI.Controllers.UserController.Get">
             <summary>
             GetAll
             </summary>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.UserController.Get(System.String)">
+        <member name="M:MusicPlayer.WEBAPI.Controllers.UserController.Get(System.String)">
             <summary>
             GetForViewById
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.UserController.GetForUpdate(System.String)">
+        <member name="M:MusicPlayer.WEBAPI.Controllers.UserController.GetForUpdate(System.String)">
             <summary>
             GetForUpdateById
             </summary>
             <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.UserController.Post(MediaPlayer.BLL.DTOs.UserCreateDTO)">
+        <member name="M:MusicPlayer.WEBAPI.Controllers.UserController.Post(MusicPlayer.BLL.DTOs.UserCreateDTO)">
             <summary>
             Create user
             </summary>
             <param name="userDTO"></param>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.UserController.Put(System.String,MediaPlayer.BLL.DTOs.UserDTO.UserUpdateDTO)">
+        <member name="M:MusicPlayer.WEBAPI.Controllers.UserController.Put(System.String,MusicPlayer.BLL.DTOs.UserUpdateDTO)">
             <summary>
             Update user
             </summary>
@@ -151,11 +151,76 @@
             <param name="userDTO"></param>
             <returns></returns>
         </member>
-        <member name="M:MediaPlayer.WEBAPI.Controllers.UserController.Delete(System.String)">
+        <member name="M:MusicPlayer.WEBAPI.Controllers.UserController.Delete(System.String)">
             <summary>
             Delete user
             </summary>
             <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicPlayer.API.Controllers.PlaylistController.GetAll">
+            <summary>
+            Get all playlists
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MusicPlayer.API.Controllers.PlaylistController.GetAllUserPlaylists(System.String)">
+            <summary>
+            Get all playlists of user
+            </summary>
+            <param name="UserId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicPlayer.API.Controllers.PlaylistController.Get(System.Int32)">
+            <summary>
+            Get Playlist by Id
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicPlayer.API.Controllers.PlaylistController.GetUserPlaylist(System.String,System.String)">
+            <summary>
+            Get Playlist by UserId
+            </summary>
+            <param name="UserId"></param>
+            <param name="PlaylistName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicPlayer.API.Controllers.PlaylistController.PostMusicToPlaylist(MusicPlayer.BLL.DTOs.MusicPlaylistDTO)">
+            <summary>
+            Add Music to Playlist
+            </summary>
+            <param name="musicPlaylistDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicPlayer.API.Controllers.PlaylistController.PostPlaylist(System.String,MusicPlayer.BLL.DTOs.PlaylistCUDTO)">
+            <summary>
+            Create playlist
+            </summary>
+            <param name="UserId"></param>
+            <param name="playlistCreateDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicPlayer.API.Controllers.PlaylistController.PutPlaylistName(System.Int32,MusicPlayer.BLL.DTOs.PlaylistCUDTO)">
+            <summary>
+            Update the playlist name
+            </summary>
+            <param name="Id"></param>
+            <param name="playlistCUDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicPlayer.API.Controllers.PlaylistController.DeletePlaylist(System.Int32)">
+            <summary>
+            Delete playlist
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicPlayer.API.Controllers.PlaylistController.DeleteMusicFromPlaylist(MusicPlayer.BLL.DTOs.MusicPlaylistDTO)">
+            <summary>
+            Delete music from playlist
+            </summary>
+            <param name="musicPlaylistDTO"></param>
             <returns></returns>
         </member>
     </members>

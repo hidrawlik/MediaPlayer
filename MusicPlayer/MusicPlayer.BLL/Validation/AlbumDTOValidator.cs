@@ -1,8 +1,8 @@
 ﻿using System;
 using FluentValidation;
-using MediaPlayer.BLL.DTOs;
+using MusicPlayer.BLL.DTOs;
 
-namespace MediaPlayer.BLL.Validation
+namespace MusicPlayer.BLL.Validation
 {
     public class AlbumDTOValidator : AbstractValidator<AlbumDTO>
     {

@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using MediaPlayer.DAL.Entities;
+using MusicPlayer.DAL.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 
-namespace MediaPlayer.DAL.EFCoreContexts
+namespace MusicPlayer.DAL.EFCoreContexts
 {
     public partial class MusicDBContext : IdentityDbContext<User>
     {

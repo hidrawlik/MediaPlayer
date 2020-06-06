@@ -2,26 +2,22 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MediaPlayer.DAL.Entities;
-using MediaPlayer.BLL.DTOs;
-using MediaPlayer.BLL.DTOs.MusicDTO;
-using MediaPlayer.BLL.DTOs.UserDTO;
+using MusicPlayer.DAL.Entities;
+using MusicPlayer.BLL.DTOs;
 
-namespace MediaPlayer.BLL
+namespace MusicPlayer.BLL
 {
     public class OrganizationProfile : Profile
     {
         public OrganizationProfile()
         {
             CreateMap<Music, MusicCUDTO>()
-                .ForMember(e => e.Album, opt => opt.Ignore())
-                .ConstructUsing(e => new MusicCUDTO(e.Id));
+                .ForMember(e => e.Album, opt => opt.Ignore());
 
             CreateMap<MusicCUDTO, Music>()
                 .ForMember(e => e.Album, opt => opt.Ignore());
 
             CreateMap<Music, MusicViewDTO>()
-                .ConstructUsing(e => new MusicViewDTO(e.Id))
                 .ReverseMap();
 
             CreateMap<Genre, GenreDTO>()
@@ -30,8 +26,16 @@ namespace MediaPlayer.BLL
             CreateMap<Album, AlbumDTO>()
                 .ReverseMap();
 
-            //Identity
+            CreateMap<UserPlaylist, PlaylistDTO>()
+                .ReverseMap();
 
+            CreateMap<UserPlaylist, PlaylistCUDTO>()
+                .ReverseMap();
+
+            CreateMap<MusicPlaylist, MusicPlaylistDTO>()
+                .ReverseMap();
+
+            //Identity
             CreateMap<User, UserCreateDTO>()
                 .ForMember(e => e.UserName, opt => opt.MapFrom(e => e.UserName))
                 .ReverseMap();

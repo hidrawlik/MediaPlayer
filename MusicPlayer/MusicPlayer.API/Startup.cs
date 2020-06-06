@@ -3,27 +3,25 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MediaPlayer.DAL;
-using MediaPlayer.DAL.EFCoreContexts;
-using MediaPlayer.DAL.Interfaces;
-using MediaPlayer.DAL.Interfaces.IEntityRepositories;
-using MediaPlayer.DAL.Repositories.EntityRepositories;
-using MediaPlayer.DAL.UnitOfWork;
-using MediaPlayer.BLL.Services;
-using MediaPlayer.BLL.Interfaces.IServices;
+using MusicPlayer.DAL;
+using MusicPlayer.DAL.EFCoreContexts;
+using MusicPlayer.DAL.Interfaces;
+using MusicPlayer.DAL.Interfaces.IEntityRepositories;
+using MusicPlayer.DAL.Repositories.EntityRepositories;
+using MusicPlayer.DAL.UnitOfWork;
+using MusicPlayer.BLL.Services;
+using MusicPlayer.BLL.Interfaces.IServices;
 using Microsoft.EntityFrameworkCore;
-using MediaPlayer.DAL.Entities;
+using MusicPlayer.DAL.Entities;
 using Microsoft.AspNetCore.Identity;
 using FluentValidation;
-using MediaPlayer.BLL.DTOs.MusicDTO;
-using MediaPlayer.BLL.Validation;
+using MusicPlayer.BLL.Validation;
 using AutoMapper;
-using MediaPlayer.BLL;
+using MusicPlayer.BLL;
 using FluentValidation.AspNetCore;
 using Microsoft.OpenApi.Models;
 using System;
-using MediaPlayer.BLL.DTOs;
-using MediaPlayer.BLL.DTOs.UserDTO;
+using MusicPlayer.BLL.DTOs;
 
 namespace MusicPlayer.API
 {
@@ -58,6 +56,7 @@ namespace MusicPlayer.API
             services.AddTransient<IMusicService, MusicService>();
             services.AddTransient<IAlbumService, AlbumService>();
             services.AddTransient<IGenreService, GenreService>();
+            services.AddTransient<IPlaylistService, PlaylistService>();
 
             // Identity
             services.AddTransient<IUserService, UserService>();
@@ -69,10 +68,13 @@ namespace MusicPlayer.API
             services.AddTransient<IValidator<MusicCUDTO>, MusicCUDTOValidator>();
             services.AddTransient<IValidator<GenreDTO>, GenreDTOValidator>();
             services.AddTransient<IValidator<AlbumDTO>, AlbumDTOValidator>();
+            services.AddTransient<IValidator<PlaylistDTO>, PlaylistDTOValidator>();
+            services.AddTransient<IValidator<MusicPlaylistDTO>, MusicPlaylistDTOValidator>();
+            services.AddTransient<IValidator<PlaylistCUDTO>, PlaylistCUDTOValidator>();
 
             // Identity
             services.AddTransient<IValidator<UserCreateDTO>, UserCreateDTOValidator>();
-            services.AddTransient<IValidator<UserUpdateDTO>, UserEditDTOValidator>();
+            services.AddTransient<IValidator<UserUpdateDTO>, UserUpdateDTOValidator>();
             #endregion
 
             #region Swagger
@@ -144,7 +146,6 @@ namespace MusicPlayer.API
             }
 
             app.UseSwagger();
-
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My MusicPlayer API V1");

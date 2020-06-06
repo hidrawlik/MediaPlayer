@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MediaPlayer.BLL.DTOs
+namespace MusicPlayer.BLL.DTOs
 {
     public class UserCreateDTO
     {

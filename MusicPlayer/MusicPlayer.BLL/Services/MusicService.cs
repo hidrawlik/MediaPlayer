@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using MediaPlayer.BLL.Interfaces.IServices;
-using MediaPlayer.DAL.Interfaces;
-using MediaPlayer.BLL.DTOs.MusicDTO;
-using MediaPlayer.DAL.Entities;
+using MusicPlayer.BLL.Interfaces.IServices;
+using MusicPlayer.DAL.Interfaces;
+using MusicPlayer.DAL.Entities;
 using System.Linq;
 using AutoMapper;
+using MusicPlayer.BLL.DTOs;
 
-namespace MediaPlayer.BLL.Services
+namespace MusicPlayer.BLL.Services
 {
     public class MusicService : SetOfFields, IMusicService
     {

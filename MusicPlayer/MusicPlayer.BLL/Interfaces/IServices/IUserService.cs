@@ -1,12 +1,11 @@
-﻿using MediaPlayer.BLL.DTOs;
-using MediaPlayer.BLL.DTOs.UserDTO;
+﻿using MusicPlayer.BLL.DTOs;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MediaPlayer.BLL.Interfaces.IServices
+namespace MusicPlayer.BLL.Interfaces.IServices
 {
     public interface IUserService
     {

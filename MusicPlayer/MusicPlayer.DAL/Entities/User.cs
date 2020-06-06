@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
 
-namespace MediaPlayer.DAL.Entities
+namespace MusicPlayer.DAL.Entities
 {
     public class User : IdentityUser
     {
