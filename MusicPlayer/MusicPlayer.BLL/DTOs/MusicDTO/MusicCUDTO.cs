@@ -8,10 +8,5 @@ namespace MusicPlayer.BLL.DTOs
     {
         public string Genre { get; set; }
         public string Album { get; set; }
-
-        public void SetAgeRestrictions(bool value)
-        {
-            ForSixteenYearOlds = value;
-        }
     }
 }

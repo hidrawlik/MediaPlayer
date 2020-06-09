@@ -59,7 +59,7 @@ namespace MusicPlayer.API
             services.AddTransient<IPlaylistService, PlaylistService>();
 
             // Identity
-            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IUserService, AccountService>();
             #endregion
 
             services.AddAutoMapper(typeof(OrganizationProfile));

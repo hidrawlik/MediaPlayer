@@ -17,11 +17,9 @@ namespace MusicPlayer.BLL.Validation
                 .EmailAddress();
 
             RuleFor(e => e.Password)
-                .NotEmpty()
-                .MinimumLength(6);
+                .NotEmpty();
 
             RuleFor(e => e.ConfirmPassword)
-                .NotNull()
                 .Equal(e => e.Password);
         }
     }

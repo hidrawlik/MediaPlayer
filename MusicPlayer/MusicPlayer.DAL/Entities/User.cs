@@ -8,7 +8,6 @@ namespace MusicPlayer.DAL.Entities
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime DateOfBirth { get; set; }
         public byte[] Photo { get; set; }
 
         public virtual ICollection<UserPlaylist> UserPlaylists { get; set; }

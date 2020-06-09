@@ -103,9 +103,17 @@ namespace MusicPlayer.WEBAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var result = await userService.AddUserAsync(userDTO);
+            var result = await userService.CreateUserAsync(userDTO);
 
-            return Ok(result);
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+            }
+
+            return Ok(userDTO);
         }
 
         /// <summary>
@@ -122,11 +130,6 @@ namespace MusicPlayer.WEBAPI.Controllers
                 return BadRequest();
             }
 
-            if (!await userService.CheckPassword(id, userDTO.CurrentPassword))
-            {
-                ModelState.AddModelError("CurrentPassword", "Поточний пароль введено невірно");
-            }
-
             if (!await userService.IsEmailUniqueAsync(userDTO.Email))
             {
                 ModelState.AddModelError("Email", "Email вже використовується");
@@ -141,9 +144,16 @@ namespace MusicPlayer.WEBAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            
             var result = await userService.UpdateUserAsync(id, userDTO);
 
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+            }
             return Ok(result);
         }
 
@@ -155,14 +165,14 @@ namespace MusicPlayer.WEBAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(string id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return BadRequest();
             }
 
             var userDTO = await userService.GetUserByIdAsync(id);
 
-            if(userDTO == null)
+            if (userDTO == null)
             {
                 return NotFound();
             }

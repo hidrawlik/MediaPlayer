@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using MusicPlayer.DAL.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using MusicPlayer.DAL.Configuration;
 
 namespace MusicPlayer.DAL.EFCoreContexts
 {
@@ -29,11 +30,21 @@ namespace MusicPlayer.DAL.EFCoreContexts
             {
                 optionsBuilder.UseSqlServer(MyConnection.Connection);
             }
+            optionsBuilder.EnableSensitiveDataLogging();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            #region Configuration
+            modelBuilder.ApplyConfiguration(new GenreConfiguration());
+            modelBuilder.ApplyConfiguration(new AlbumConfiguration());
+            modelBuilder.ApplyConfiguration(new MusicConfiguration());
+            modelBuilder.ApplyConfiguration(new MusicGenreConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            #endregion
 
             modelBuilder.Entity<User>(entity =>
             {
@@ -144,54 +155,6 @@ namespace MusicPlayer.DAL.EFCoreContexts
                    .IsRequired();
             });
 
-            modelBuilder.Entity<Genre>().HasData(
-               new Genre[] {
-                    new Genre { Id = 1, Name = "Поп-музика" },
-                    new Genre { Id = 2, Name = "Рок" },
-                    new Genre { Id = 3, Name = "Фанк"}
-               });
-
-            modelBuilder.Entity<Album>().HasData(
-                new Album[] {
-                    new Album { Id = 1, Name = "Голий король", Author = "Бумбокс", Year = 2017 },
-                    new Album { Id = 2, Name = "Музасфера", Author = "Сергій Бабкін", Year = 2018 },
-                    new Album { Id = 3, Name = "Один в каное", Author = "Один в каное", Year = 2016 },
-                    new Album { Id = 4, Name = "III", Author = "Бумбокс", Year = 2008 }
-                });
-
-            modelBuilder.Entity<Music>().HasData(
-                new Music[]
-                {
-                    new Music { Id = 1, Name = "Де би я", Author = "Сергій Бабкін", AlbumId = 2, Year = 2018 },
-                    new Music { Id = 2, Name = "Квіти у волоссі", Author = "Бумбокс", Year = 2006 },
-                    new Music { Id = 3, Name = "Ми вільні", Author = "Letay", Year = 2020 },
-                    new Music { Id = 4, Name = "Наодинці", Author = "Бумбокс", AlbumId = 4, Year = 2006 },
-                    new Music { Id = 5, Name = "8-Ий колір", Author = "Мотор'Ролла", Year = 2005 },
-                    new Music { Id = 6, Name = "Човен", Author = "Один в каное", AlbumId = 3, Year = 2016 },
-                    new Music { Id = 7, Name = "Сталеві квіти", Author = "Бумбокс", AlbumId = 1, Year = 2017 },
-                    new Music { Id = 8, Name = "Мила моя", Author = "Letay", Year = 2018 },
-                    new Music { Id = 9, Name = "Пообіцяй мені", Author = "Один в каное", AlbumId = 3, Year = 2016 },
-                    new Music { Id = 10, Name = "Дихай повільно", Author = "Сергій Бабкін", Year = 2018 }
-                });
-
-            modelBuilder.Entity<MusicGenre>().HasData(
-                new MusicGenre[] {
-                    new MusicGenre { Id = 1, MusicId = 1, GenreId = 1 },
-                    new MusicGenre { Id = 2, MusicId = 2, GenreId = 1 },
-                    new MusicGenre { Id = 3, MusicId = 3, GenreId = 1 },
-                    new MusicGenre { Id = 4, MusicId = 4, GenreId = 1 },
-                    new MusicGenre { Id = 5, MusicId = 5, GenreId = 1 },
-                    new MusicGenre { Id = 6, MusicId = 6, GenreId = 1 },
-                    new MusicGenre { Id = 7, MusicId = 7, GenreId = 1 },
-                    new MusicGenre { Id = 8, MusicId = 8, GenreId = 1 },
-                    new MusicGenre { Id = 9, MusicId = 9, GenreId = 1 },
-                    new MusicGenre { Id = 10, MusicId = 10, GenreId = 1 }
-                });
-
-            modelBuilder.Entity<User>().HasData(
-                new User[] {
-                    new User { UserName = "Carendoh", NormalizedUserName = "CARENDOH", FirstName = "Oleksandr", LastName = "Slobodian", Email = "test@gmail.com", NormalizedEmail = "TEST@GMAIL.COM"}
-                });
             OnModelCreatingPartial(modelBuilder);
         }
 

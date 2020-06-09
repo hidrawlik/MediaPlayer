@@ -11,7 +11,6 @@ namespace MusicPlayer.DAL.Entities
         public string Author { get; set; }
         public int? Year { get; set; }
         public int? AlbumId { get; set; }
-        public bool ForSixteenYearOlds { get; set; }
         public byte[] Photo { get; set; }
 
         public Album Album { get; set; }

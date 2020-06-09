@@ -4,6 +4,71 @@
         <name>MusicPlayer.API</name>
     </assembly>
     <members>
+        <member name="M:MusicPlayer.API.Controllers.PlaylistController.GetAll">
+            <summary>
+            Get all playlists
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MusicPlayer.API.Controllers.PlaylistController.GetAllUserPlaylists(System.String)">
+            <summary>
+            Get all playlists of user
+            </summary>
+            <param name="UserId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicPlayer.API.Controllers.PlaylistController.Get(System.Int32)">
+            <summary>
+            Get Playlist by Id
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicPlayer.API.Controllers.PlaylistController.GetUserPlaylist(System.String,System.String)">
+            <summary>
+            Get Playlist by UserId
+            </summary>
+            <param name="UserId"></param>
+            <param name="PlaylistName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicPlayer.API.Controllers.PlaylistController.PostMusicToPlaylist(MusicPlayer.BLL.DTOs.MusicPlaylistDTO)">
+            <summary>
+            Add Music to Playlist
+            </summary>
+            <param name="musicPlaylistDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicPlayer.API.Controllers.PlaylistController.PostPlaylist(System.String,MusicPlayer.BLL.DTOs.PlaylistCUDTO)">
+            <summary>
+            Create playlist
+            </summary>
+            <param name="UserId"></param>
+            <param name="playlistCreateDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicPlayer.API.Controllers.PlaylistController.PutPlaylistName(System.Int32,MusicPlayer.BLL.DTOs.PlaylistCUDTO)">
+            <summary>
+            Update the playlist name
+            </summary>
+            <param name="Id"></param>
+            <param name="playlistCUDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicPlayer.API.Controllers.PlaylistController.DeletePlaylist(System.Int32)">
+            <summary>
+            Delete playlist
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicPlayer.API.Controllers.PlaylistController.DeleteMusicFromPlaylist(MusicPlayer.BLL.DTOs.MusicPlaylistDTO)">
+            <summary>
+            Delete music from playlist
+            </summary>
+            <param name="musicPlaylistDTO"></param>
+            <returns></returns>
+        </member>
         <member name="M:MusicPlayer.WEBAPI.Controllers.AlbumController.GetAll">
             <summary>
             Get all
@@ -156,71 +221,6 @@
             Delete user
             </summary>
             <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MusicPlayer.API.Controllers.PlaylistController.GetAll">
-            <summary>
-            Get all playlists
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:MusicPlayer.API.Controllers.PlaylistController.GetAllUserPlaylists(System.String)">
-            <summary>
-            Get all playlists of user
-            </summary>
-            <param name="UserId"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MusicPlayer.API.Controllers.PlaylistController.Get(System.Int32)">
-            <summary>
-            Get Playlist by Id
-            </summary>
-            <param name="Id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MusicPlayer.API.Controllers.PlaylistController.GetUserPlaylist(System.String,System.String)">
-            <summary>
-            Get Playlist by UserId
-            </summary>
-            <param name="UserId"></param>
-            <param name="PlaylistName"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MusicPlayer.API.Controllers.PlaylistController.PostMusicToPlaylist(MusicPlayer.BLL.DTOs.MusicPlaylistDTO)">
-            <summary>
-            Add Music to Playlist
-            </summary>
-            <param name="musicPlaylistDTO"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MusicPlayer.API.Controllers.PlaylistController.PostPlaylist(System.String,MusicPlayer.BLL.DTOs.PlaylistCUDTO)">
-            <summary>
-            Create playlist
-            </summary>
-            <param name="UserId"></param>
-            <param name="playlistCreateDTO"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MusicPlayer.API.Controllers.PlaylistController.PutPlaylistName(System.Int32,MusicPlayer.BLL.DTOs.PlaylistCUDTO)">
-            <summary>
-            Update the playlist name
-            </summary>
-            <param name="Id"></param>
-            <param name="playlistCUDTO"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MusicPlayer.API.Controllers.PlaylistController.DeletePlaylist(System.Int32)">
-            <summary>
-            Delete playlist
-            </summary>
-            <param name="Id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MusicPlayer.API.Controllers.PlaylistController.DeleteMusicFromPlaylist(MusicPlayer.BLL.DTOs.MusicPlaylistDTO)">
-            <summary>
-            Delete music from playlist
-            </summary>
-            <param name="musicPlaylistDTO"></param>
             <returns></returns>
         </member>
     </members>

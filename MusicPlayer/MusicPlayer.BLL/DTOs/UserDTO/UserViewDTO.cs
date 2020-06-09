@@ -11,7 +11,7 @@ namespace MusicPlayer.BLL.DTOs
             id = Id;
         }
 
-        private readonly string id = "-1";
+        private readonly string id;
 
         public string Id
         {

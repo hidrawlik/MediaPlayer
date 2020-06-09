@@ -7,22 +7,12 @@ namespace MusicPlayer.BLL.DTOs
     public class UserUpdateDTO
     {
         public UserUpdateDTO() { }
-
         public UserUpdateDTO(string Id)
         {
-            id = Id;
+            this.Id = Id;
         }
 
-        private readonly string id = "-1";
-
-        public string Id
-        {
-            get
-            {
-                return id;
-            }
-        }
-
+        public string Id { get;}
         public string UserName { get; set; }
         public string Email { get; set; }
         public string CurrentPassword { get; set; }
@@ -30,7 +20,6 @@ namespace MusicPlayer.BLL.DTOs
         public string ConfirmPassword { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime DateOfBirth { get; set; }
         public byte[] Photo { get; set; }
     }
 }

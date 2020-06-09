@@ -9,7 +9,7 @@ namespace MusicPlayer.BLL.Interfaces.IServices
 {
     public interface IUserService
     {
-        Task<IdentityResult> AddUserAsync(UserCreateDTO userDTO);
+        Task<IdentityResult> CreateUserAsync(UserCreateDTO userDTO);
 
         Task DeleteUserAsync(UserViewDTO userDTO);
 
@@ -28,7 +28,5 @@ namespace MusicPlayer.BLL.Interfaces.IServices
         Task<bool> IsEmailUniqueAsync(string Email);
 
         Task<bool> IsUserNameUniqueAsync(string userName);
-
-        Task<bool> CheckPassword(string UserId, string password);
     }
 }

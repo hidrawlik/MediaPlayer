@@ -20,11 +20,9 @@ namespace MusicPlayer.BLL.Validation
                 .EmailAddress();
 
             RuleFor(e => e.NewPassword)
-                .NotEmpty()
                 .MinimumLength(6);
 
             RuleFor(e => e.ConfirmPassword)
-                .NotNull()
                 .Equal(e => e.NewPassword);
 
             RuleFor(e => e.FirstName)
@@ -34,21 +32,6 @@ namespace MusicPlayer.BLL.Validation
             RuleFor(e => e.LastName)
                 .MinimumLength(2)
                 .MaximumLength(30);
-
-            RuleFor(e => e.DateOfBirth.Year)
-                .NotNull()
-                .LessThanOrEqualTo(DateTime.Now.Year)
-                .GreaterThanOrEqualTo(1900);
-
-            RuleFor(e => e.DateOfBirth.Month)
-                .NotNull()
-                .GreaterThanOrEqualTo(1)
-                .LessThanOrEqualTo(12);
-
-            RuleFor(e => e.DateOfBirth.Day)
-                .NotNull()
-                .GreaterThanOrEqualTo(1)
-                .LessThanOrEqualTo(31);
         }
     }
 }
