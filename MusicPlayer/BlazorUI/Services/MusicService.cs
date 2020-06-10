@@ -10,7 +10,7 @@ namespace BlazorUI.Services
 {
     public class MusicService
     {
-        public HttpClient _httpClient;
+        private readonly HttpClient _httpClient;
 
         public MusicService(HttpClient client)
         {
@@ -20,6 +20,15 @@ namespace BlazorUI.Services
         public async Task<IEnumerable<MusicViewModel>> GetAllMusicAsync()
         {
             var response = await _httpClient.GetAsync("api/music");
+            response.EnsureSuccessStatusCode();
+
+            using var responseContent = await response.Content.ReadAsStreamAsync();
+            return await JsonSerializer.DeserializeAsync<IEnumerable<MusicViewModel>>(responseContent);
+        }
+
+        public async Task<IEnumerable<MusicViewModel>> GetAllMusicByAlbumAsync(int AlbumId)
+        {
+            var response = await _httpClient.GetAsync($"api/music/album/{AlbumId}");
             response.EnsureSuccessStatusCode();
 
             using var responseContent = await response.Content.ReadAsStreamAsync();

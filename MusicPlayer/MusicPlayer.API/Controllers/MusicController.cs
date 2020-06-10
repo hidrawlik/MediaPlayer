@@ -25,7 +25,7 @@ namespace MusicPlayer.WEBAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MusicViewDTO>>> GetAll()
         {
-            IEnumerable<MusicViewDTO> musicsDto = await musicService.GetAllMusicAsync();
+            var musicsDto = await musicService.GetAllMusicAsync();
 
             if (musicsDto == null)
             {
@@ -33,6 +33,25 @@ namespace MusicPlayer.WEBAPI.Controllers
             }
 
             return Ok(musicsDto);
+        }
+
+        /// <summary>
+        /// Get by AlbumId
+        /// </summary>
+        /// <param name="AlbumId"></param>
+        /// <returns></returns>
+        [Route("album/{AlbumId}")]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<MusicViewDTO>>> GetByAlbum(int AlbumId)
+        {
+            var MusicViewDTOList = await musicService.GetMusicByAlbumAsync(AlbumId);
+
+            if(MusicViewDTOList == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(MusicViewDTOList);
         }
 
         /// <summary>

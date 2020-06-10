@@ -1,0 +1,13 @@
+﻿@page "/Albums/{AlbumId:int}"
+
+@using Models
+@using Services
+
+@inject MusicService musicService
+
+    <h1>@AlbumId</h1>
+
+@code {
+    [Parameter]
+    public int AlbumId { get; set; }
+}

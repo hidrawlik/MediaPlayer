@@ -62,7 +62,7 @@ namespace MusicPlayer.API
             services.AddTransient<IUserService, AccountService>();
             #endregion
 
-            services.AddAutoMapper(typeof(OrganizationProfile));
+            services.AddAutoMapper(typeof(MapperProfile));
 
             #region DTO Validators
             services.AddTransient<IValidator<MusicCUDTO>, MusicCUDTOValidator>();

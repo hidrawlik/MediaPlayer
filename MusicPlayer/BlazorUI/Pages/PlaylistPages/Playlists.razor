@@ -1,4 +1,4 @@
-﻿@page "/playlists"
+﻿@page "/Playlists"
 
 @using BlazorUI.Models
 @using BlazorUI.Services
@@ -21,9 +21,9 @@ else
         <tbody>
             @foreach (var playlist in playlists)
             {
-                <tr>
-                    <td>@playlist.name</td>
-                </tr>
+                    <tr>
+                        <td><a href="/Playlists/@playlist.name">@playlist.name</a></td>
+                    </tr>
             }
         </tbody>
     </table>

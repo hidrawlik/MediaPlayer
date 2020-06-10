@@ -10,8 +10,8 @@ using MusicPlayer.DAL.EFCoreContexts;
 namespace MusicPlayer.DAL.Migrations
 {
     [DbContext(typeof(MusicDBContext))]
-    [Migration("20200608121309_MediaDBMigration")]
-    partial class MediaDBMigration
+    [Migration("20200609223201_MusicDBMigration")]
+    partial class MusicDBMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,15 +50,15 @@ namespace MusicPlayer.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a24c227b-c847-4dd6-8e4c-1e025c344e7e",
-                            ConcurrencyStamp = "1a1be93c-6662-46cc-886d-6bdcddf02c8c",
+                            Id = "c35935bc-eaf6-4b31-9b2b-058d98896a0d",
+                            ConcurrencyStamp = "84a80432-75fb-4912-bedb-8c10c388ed08",
                             Name = "Visitor",
                             NormalizedName = "VISITOR"
                         },
                         new
                         {
-                            Id = "b9efe650-429c-4367-a278-059a454f9924",
-                            ConcurrencyStamp = "dad51c1f-0117-4c4f-bb1a-e57978f0912e",
+                            Id = "5fc857dd-8ed6-417a-adce-1bc2d2a45aa3",
+                            ConcurrencyStamp = "202c3b04-4608-46af-bc4c-d4780092cfb2",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -185,8 +185,8 @@ namespace MusicPlayer.DAL.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<byte[]>("Photo")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("PhotoPath")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Year")
                         .HasColumnType("int");
@@ -288,8 +288,8 @@ namespace MusicPlayer.DAL.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<byte[]>("Photo")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("PhotoPath")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Year")
                         .HasColumnType("int");
@@ -543,8 +543,8 @@ namespace MusicPlayer.DAL.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<byte[]>("Photo")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("PhotoPath")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -571,9 +571,9 @@ namespace MusicPlayer.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b8428737-986f-4a72-9a14-ab75eabfe15d",
+                            Id = "d3a96cbd-14dc-412c-9376-04051c634c27",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1ff320d4-2072-452c-bcf2-97d7797d8598",
+                            ConcurrencyStamp = "11ece520-5900-4b45-9cd0-6430010b40a6",
                             Email = "test@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Oleksandr",
@@ -582,7 +582,7 @@ namespace MusicPlayer.DAL.Migrations
                             NormalizedEmail = "TEST@GMAIL.COM",
                             NormalizedUserName = "CARENDOH",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "950db0e8-4b3c-463a-a710-7ccbd397c6b6",
+                            SecurityStamp = "6975444f-ee95-426b-b267-2925929a26cc",
                             TwoFactorEnabled = false,
                             UserName = "Carendoh"
                         });

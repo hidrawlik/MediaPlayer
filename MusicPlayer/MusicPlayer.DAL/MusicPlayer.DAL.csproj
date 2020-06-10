@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200608115816_MusicDBMigration.cs" />
     <Compile Remove="Migrations\20200608115816_MusicDBMigration.Designer.cs" />
+    <Compile Remove="Migrations\20200608121309_MediaDBMigration.cs" />
+    <Compile Remove="Migrations\20200608121309_MediaDBMigration.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

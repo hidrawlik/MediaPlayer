@@ -20,6 +20,6 @@ namespace MusicPlayer.BLL.DTOs
         public string ConfirmPassword { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public byte[] Photo { get; set; }
+        public string PhotoPath { get; set; }
     }
 }

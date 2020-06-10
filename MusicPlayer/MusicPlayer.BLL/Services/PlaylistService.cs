@@ -52,8 +52,16 @@ namespace MusicPlayer.BLL.Services
             var PlaylistsDTO = mapper.Map<IEnumerable<PlaylistDTO>>(userPlaylists);
             foreach (var playlist in PlaylistsDTO)
             {
-                var musicList = (await unitOfWork.MusicPlaylistRepository.GetAll(playlist.Id)).ToList();
-                playlist.MusicList = mapper.Map<IList<MusicViewDTO>>(musicList);
+                var musicPlaylistList = (await unitOfWork.MusicPlaylistRepository.GetAll(playlist.Id)).ToList();
+
+                var musicList = new List<Music>();
+
+                foreach (var musicPlaylist in musicPlaylistList)
+                {
+                    musicList.Add(await unitOfWork.MusicRepository.Get(musicPlaylist.MusicId));
+                }
+
+                playlist.MusicList = mapper.Map<IEnumerable<MusicViewDTO>>(musicList);
             }
             return PlaylistsDTO;
         }
@@ -61,35 +69,49 @@ namespace MusicPlayer.BLL.Services
         {
             var userPlaylist = await unitOfWork.UserPlaylistRepository.Get(Id);
 
-            var userPlaylistDTO = mapper.Map<PlaylistDTO>(userPlaylist);
+            var playlistDTO = mapper.Map<PlaylistDTO>(userPlaylist);
 
-            if(userPlaylistDTO == null)
+            if (playlistDTO == null)
             {
-                return userPlaylistDTO;
+                return playlistDTO;
             }
 
-            var musicList = await unitOfWork.MusicPlaylistRepository.GetAll(userPlaylistDTO.Id);
+            var musicPlaylistList = (await unitOfWork.MusicPlaylistRepository.GetAll(playlistDTO.Id)).ToList();
 
-            userPlaylistDTO.MusicList = mapper.Map<IList<MusicViewDTO>>(musicList);
+            var musicList = new List<Music>();
 
-            return userPlaylistDTO;
+            foreach (var musicPlaylist in musicPlaylistList)
+            {
+                musicList.Add(await unitOfWork.MusicRepository.Get(musicPlaylist.MusicId));
+            }
+
+            playlistDTO.MusicList = mapper.Map<IEnumerable<MusicViewDTO>>(musicList);
+
+            return playlistDTO;
         }
         public async Task<PlaylistDTO> GetPlaylistAsync(string UserId, string PlaylistName)
         {
             var userPlaylist = await unitOfWork.UserPlaylistRepository.Get(UserId, PlaylistName);
 
-            var userPlaylistDTO = mapper.Map<PlaylistDTO>(userPlaylist);
+            var playlistDTO = mapper.Map<PlaylistDTO>(userPlaylist);
 
-            if (userPlaylistDTO == null)
+            if (playlistDTO == null)
             {
-                return userPlaylistDTO;
+                return playlistDTO;
             }
 
-            var musicList = await unitOfWork.MusicPlaylistRepository.GetAll(userPlaylistDTO.Id);
+            var musicPlaylistList = (await unitOfWork.MusicPlaylistRepository.GetAll(playlistDTO.Id)).ToList();
 
-            userPlaylistDTO.MusicList = mapper.Map<IList<MusicViewDTO>>(musicList);
+            var musicList = new List<Music>();
 
-            return userPlaylistDTO;
+            foreach (var musicPlaylist in musicPlaylistList)
+            {
+                musicList.Add(await unitOfWork.MusicRepository.Get(musicPlaylist.MusicId));
+            }
+
+            playlistDTO.MusicList = mapper.Map<IEnumerable<MusicViewDTO>>(musicList);
+
+            return playlistDTO;
         }
         public async Task<IEnumerable<PlaylistDTO>> GetPlaylistDTOListAsync(string UserId)
         {
@@ -99,10 +121,17 @@ namespace MusicPlayer.BLL.Services
 
             foreach (var playlist in userPlaylistDTO)
             {
-                var musicList = (await unitOfWork.MusicPlaylistRepository.GetAll(playlist.Id)).ToList();
-                playlist.MusicList = mapper.Map<IList<MusicViewDTO>>(musicList);
-            }
+                var musicPlaylistList = (await unitOfWork.MusicPlaylistRepository.GetAll(playlist.Id)).ToList();
 
+                var musicList = new List<Music>();
+
+                foreach (var musicPlaylist in musicPlaylistList)
+                {
+                    musicList.Add(await unitOfWork.MusicRepository.Get(musicPlaylist.MusicId));
+                }
+
+                playlist.MusicList = mapper.Map<IEnumerable<MusicViewDTO>>(musicList);
+            }
             return userPlaylistDTO;
         }
         public async Task UpdatePlaylistNameAsync(PlaylistDTO playlistDTO, string NewName)

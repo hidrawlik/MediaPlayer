@@ -1,0 +1,42 @@
+﻿.albumCard {
+    border-radius: 10px;
+    margin-top: 3%;
+    box-shadow: 5px black;
+    background: #ededed;
+    transition-duration: 0.2s;
+}
+
+.albumCard:hover
+{
+    filter: brightness(85%);
+    cursor: pointer;
+}
+
+.demo-mat-card-content
+{
+    padding: 1rem;
+}
+
+.card-img
+{
+    background-size: cover;
+}
+
+.authorinfo
+{
+    width: 100%;
+    margin: 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.album-info
+{
+    display: flex;
+}
+
+img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    max-height: 300px;
+}

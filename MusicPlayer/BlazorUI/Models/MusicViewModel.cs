@@ -11,6 +11,6 @@ namespace BlazorUI.Models
         public string name { get; set; }
         public string author { get; set; }
         public int? year { get; set; }
-        public byte[] photo { get; set; }
+        public string photoPath { get; set; }
     }
 }

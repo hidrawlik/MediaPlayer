@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BlazorUI.Services;
+using System.Net.Http;
 
 namespace BlazorUI
 {
@@ -24,16 +25,19 @@ namespace BlazorUI
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddHttpClient<MusicService>(client =>
+            services.AddTransient(client =>
+            new HttpClient
             {
-                client.BaseAddress = new Uri("http://localhost:65507");
+                BaseAddress = new Uri("http://localhost:65507")
             });
 
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
             #region Services
-            services.AddSingleton<PlaylistService>();
+            services.AddScoped<AlbumService>();
+            services.AddScoped<MusicService>();
+            services.AddScoped<PlaylistService>();
             #endregion
         }
 

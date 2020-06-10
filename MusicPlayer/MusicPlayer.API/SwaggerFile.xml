@@ -145,6 +145,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:MusicPlayer.WEBAPI.Controllers.MusicController.GetByAlbum(System.Int32)">
+            <summary>
+            Get by AlbumId
+            </summary>
+            <param name="AlbumId"></param>
+            <returns></returns>
+        </member>
         <member name="M:MusicPlayer.WEBAPI.Controllers.MusicController.GetForView(System.Int32)">
             <summary>
             Get by Id

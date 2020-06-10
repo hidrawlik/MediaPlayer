@@ -7,9 +7,9 @@ using MusicPlayer.BLL.DTOs;
 
 namespace MusicPlayer.BLL
 {
-    public class OrganizationProfile : Profile
+    public class MapperProfile : Profile
     {
-        public OrganizationProfile()
+        public MapperProfile()
         {
             CreateMap<Music, MusicCUDTO>()
                 .ForMember(e => e.Album, opt => opt.Ignore());
@@ -30,6 +30,7 @@ namespace MusicPlayer.BLL
                 .ReverseMap();
 
             CreateMap<UserPlaylist, PlaylistCUDTO>()
+                .ForMember(e => e.Name, opt => opt.MapFrom(e => e.PlaylistName))
                 .ReverseMap();
 
             CreateMap<MusicPlaylist, MusicPlaylistDTO>()

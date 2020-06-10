@@ -13,6 +13,8 @@ namespace MusicPlayer.BLL.Interfaces.IServices
 
         Task<IEnumerable<MusicViewDTO>> GetAllMusicAsync();
 
+        Task<IEnumerable<MusicViewDTO>> GetMusicByAlbumAsync(int AlbumId);
+
         Task<MusicViewDTO> GetMusicForViewAsync(int Id);
 
         Task<MusicCUDTO> GetMusicForUpdateAsync(int Id);

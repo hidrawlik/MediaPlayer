@@ -4,4 +4,11 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\Images\III.jpg" />
+    <None Include="wwwroot\Images\Muzasfera.jpg" />
+    <None Include="wwwroot\Images\NakedKing.jpg" />
+    <None Include="wwwroot\Images\OdinVKanoe.jpg" />
+  </ItemGroup>
+
 </Project>

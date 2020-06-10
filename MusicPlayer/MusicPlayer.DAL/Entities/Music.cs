@@ -11,7 +11,7 @@ namespace MusicPlayer.DAL.Entities
         public string Author { get; set; }
         public int? Year { get; set; }
         public int? AlbumId { get; set; }
-        public byte[] Photo { get; set; }
+        public string PhotoPath { get; set; }
 
         public Album Album { get; set; }
         public virtual ICollection<MusicPlaylist> MusicPlaylists { get; set; }

@@ -45,7 +45,15 @@ F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\Mu
 F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\BlazorUI\obj\Debug\netcoreapp3.1\BlazorUI.pdb
 F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\BlazorUI\obj\Debug\netcoreapp3.1\BlazorUI.genruntimeconfig.cache
 F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\BlazorUI\obj\Debug\netcoreapp3.1\BlazorUI.csproj.CopyComplete
-F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\BlazorUI\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Playlists.razor.g.cs
-F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\BlazorUI\obj\Debug\netcoreapp3.1\Razor\Pages\Playlists.razor.g.cs
 F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\BlazorUI\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\MusicPages\Music.razor.g.cs
 F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\BlazorUI\obj\Debug\netcoreapp3.1\Razor\Pages\MusicPages\Music.razor.g.cs
+F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\BlazorUI\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\PlaylistPages\Playlists.razor.g.cs
+F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\BlazorUI\obj\Debug\netcoreapp3.1\Razor\Pages\PlaylistPages\Playlists.razor.g.cs
+F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\BlazorUI\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\PlaylistPages\Playlist.razor.g.cs
+F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\BlazorUI\obj\Debug\netcoreapp3.1\Razor\Pages\PlaylistPages\Playlist.razor.g.cs
+F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\BlazorUI\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\AlbumPages\Album.razor.g.cs
+F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\BlazorUI\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\AlbumPages\AllAlbums.razor.g.cs
+F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\BlazorUI\obj\Debug\netcoreapp3.1\Razor\Pages\AlbumPages\Album.razor.g.cs
+F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\BlazorUI\obj\Debug\netcoreapp3.1\Razor\Pages\AlbumPages\AllAlbums.razor.g.cs
+F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\BlazorUI\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\AlbumPages\AlbumCard.razor.g.cs
+F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\BlazorUI\obj\Debug\netcoreapp3.1\Razor\Pages\AlbumPages\AlbumCard.razor.g.cs

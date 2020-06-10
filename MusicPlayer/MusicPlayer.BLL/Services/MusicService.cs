@@ -45,6 +45,12 @@ namespace MusicPlayer.BLL.Services
             return mapper.Map<IEnumerable<MusicViewDTO>>(musics);
         }
 
+        public async Task<IEnumerable<MusicViewDTO>> GetMusicByAlbumAsync(int AlbumId)
+        {
+            var musicList = await unitOfWork.MusicRepository.GetByAlbumId(AlbumId);
+            return mapper.Map<IEnumerable<MusicViewDTO>>(musicList);
+        }
+
         public async Task<IEnumerable<MusicViewDTO>> GetMusicByNameAsync(string Name)
         {
             var musicList = await unitOfWork.MusicRepository.GetByName(Name);

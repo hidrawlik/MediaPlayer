@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MusicPlayer.DAL.Migrations
 {
-    public partial class MediaDBMigration : Migration
+    public partial class MusicDBMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,7 @@ namespace MusicPlayer.DAL.Migrations
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Author = table.Column<string>(maxLength: 50, nullable: false),
                     Year = table.Column<int>(nullable: false),
-                    Photo = table.Column<byte[]>(nullable: true)
+                    PhotoPath = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -58,7 +58,7 @@ namespace MusicPlayer.DAL.Migrations
                     AccessFailedCount = table.Column<int>(nullable: false),
                     FirstName = table.Column<string>(maxLength: 50, nullable: true),
                     LastName = table.Column<string>(maxLength: 50, nullable: true),
-                    Photo = table.Column<byte[]>(nullable: true)
+                    PhotoPath = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -88,7 +88,7 @@ namespace MusicPlayer.DAL.Migrations
                     Author = table.Column<string>(maxLength: 50, nullable: false),
                     Year = table.Column<int>(nullable: true),
                     AlbumId = table.Column<int>(nullable: true),
-                    Photo = table.Column<byte[]>(nullable: true)
+                    PhotoPath = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -281,7 +281,7 @@ namespace MusicPlayer.DAL.Migrations
 
             migrationBuilder.InsertData(
                 table: "Albums",
-                columns: new[] { "Id", "Author", "Name", "Photo", "Year" },
+                columns: new[] { "Id", "Author", "Name", "PhotoPath", "Year" },
                 values: new object[,]
                 {
                     { 1, "Бумбокс", "Голий король", null, 2017 },
@@ -295,14 +295,14 @@ namespace MusicPlayer.DAL.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "a24c227b-c847-4dd6-8e4c-1e025c344e7e", "1a1be93c-6662-46cc-886d-6bdcddf02c8c", "Visitor", "VISITOR" },
-                    { "b9efe650-429c-4367-a278-059a454f9924", "dad51c1f-0117-4c4f-bb1a-e57978f0912e", "Administrator", "ADMINISTRATOR" }
+                    { "c35935bc-eaf6-4b31-9b2b-058d98896a0d", "84a80432-75fb-4912-bedb-8c10c388ed08", "Visitor", "VISITOR" },
+                    { "5fc857dd-8ed6-417a-adce-1bc2d2a45aa3", "202c3b04-4608-46af-bc4c-d4780092cfb2", "Administrator", "ADMINISTRATOR" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Photo", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "b8428737-986f-4a72-9a14-ab75eabfe15d", 0, "1ff320d4-2072-452c-bcf2-97d7797d8598", "test@gmail.com", false, "Oleksandr", "Slobodian", false, null, "TEST@GMAIL.COM", "CARENDOH", null, null, false, null, "950db0e8-4b3c-463a-a710-7ccbd397c6b6", false, "Carendoh" });
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "PhotoPath", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "d3a96cbd-14dc-412c-9376-04051c634c27", 0, "11ece520-5900-4b45-9cd0-6430010b40a6", "test@gmail.com", false, "Oleksandr", "Slobodian", false, null, "TEST@GMAIL.COM", "CARENDOH", null, null, false, null, "6975444f-ee95-426b-b267-2925929a26cc", false, "Carendoh" });
 
             migrationBuilder.InsertData(
                 table: "Genres",
@@ -316,7 +316,7 @@ namespace MusicPlayer.DAL.Migrations
 
             migrationBuilder.InsertData(
                 table: "Music",
-                columns: new[] { "Id", "AlbumId", "Author", "Name", "Photo", "Year" },
+                columns: new[] { "Id", "AlbumId", "Author", "Name", "PhotoPath", "Year" },
                 values: new object[,]
                 {
                     { 2, null, "Бумбокс", "Квіти у волоссі", null, 2006 },
@@ -328,7 +328,7 @@ namespace MusicPlayer.DAL.Migrations
 
             migrationBuilder.InsertData(
                 table: "Music",
-                columns: new[] { "Id", "AlbumId", "Author", "Name", "Photo", "Year" },
+                columns: new[] { "Id", "AlbumId", "Author", "Name", "PhotoPath", "Year" },
                 values: new object[,]
                 {
                     { 7, 1, "Бумбокс", "Сталеві квіти", null, 2017 },

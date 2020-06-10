@@ -1,4 +1,4 @@
-﻿@page "/music"
+﻿@page "/Music"
 
 @using Models
 @inject Services.MusicService musicService
@@ -22,9 +22,9 @@ else
             @foreach(var music in musicList)
             {
                 <tr>
-                    <th>@music.name</th>
-                    <th>@music.author</th>
-                    <th>@music.year</th>
+                    <td>@music.name</td>
+                    <td>@music.author</td>
+                    <td>@music.year</td>
                 </tr>
             }
         </tbody>
