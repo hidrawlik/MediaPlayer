@@ -22,6 +22,9 @@ using FluentValidation.AspNetCore;
 using Microsoft.OpenApi.Models;
 using System;
 using MusicPlayer.BLL.DTOs;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace MusicPlayer.API
 {
@@ -34,10 +37,9 @@ namespace MusicPlayer.API
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MusicDBContext>(opts => opts.UseSqlServer(MyConnection.Connection));
+            services.AddDbContext<MusicDBContext>(opts => opts.UseSqlServer(ConnectionString.Value));
 
             services.AddControllers().AddFluentValidation();
 
@@ -53,13 +55,11 @@ namespace MusicPlayer.API
             services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             #region Services
-            services.AddTransient<IMusicService, MusicService>();
+            services.AddTransient<IAccountService, AccountService>(); // Identity
             services.AddTransient<IAlbumService, AlbumService>();
+            services.AddTransient<IMusicService, MusicService>();
             services.AddTransient<IGenreService, GenreService>();
             services.AddTransient<IPlaylistService, PlaylistService>();
-
-            // Identity
-            services.AddTransient<IUserService, AccountService>();
             #endregion
 
             services.AddAutoMapper(typeof(MapperProfile));
@@ -73,7 +73,8 @@ namespace MusicPlayer.API
             services.AddTransient<IValidator<PlaylistCUDTO>, PlaylistCUDTOValidator>();
 
             // Identity
-            services.AddTransient<IValidator<UserCreateDTO>, UserCreateDTOValidator>();
+            services.AddTransient<IValidator<UserDTO>, UserDTOValidator>();
+            services.AddTransient<IValidator<UserLoginDTO>, UserLoginDTOValidator>();
             services.AddTransient<IValidator<UserUpdateDTO>, UserUpdateDTOValidator>();
             #endregion
 
@@ -92,7 +93,7 @@ namespace MusicPlayer.API
             #endregion
 
             #region Identity
-            services.AddIdentity<User, IdentityRole>()
+            services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<MusicDBContext>();
 
             services.Configure<IdentityOptions>(options =>
@@ -100,9 +101,9 @@ namespace MusicPlayer.API
                 // Password settings.
                 options.Password.RequireDigit = true;
                 options.Password.RequireLowercase = true;
-                options.Password.RequireNonAlphanumeric = true;
-                options.Password.RequireUppercase = true;
-                options.Password.RequiredLength = 6;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 4;
                 options.Password.RequiredUniqueChars = 1;
 
                 // Email settings.
@@ -116,7 +117,6 @@ namespace MusicPlayer.API
                 // User settings.
                 options.User.AllowedUserNameCharacters =
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
-                options.User.RequireUniqueEmail = false;
             });
 
             services.ConfigureApplicationCookie(options =>
@@ -130,15 +130,38 @@ namespace MusicPlayer.API
                 options.SlidingExpiration = true;
             });
             #endregion
-        }
 
-        private string GetXmlCommentsPath()
-        {
-            return string.Format(@"{0}\SwaggerFile.XML", AppDomain.CurrentDomain.BaseDirectory);
-        }
+            services
+                .AddAuthentication(options =>
+                {
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+                })
+                .AddJwtBearer(cfg =>
+                {
+                    cfg.RequireHttpsMetadata = false;
+                    cfg.SaveToken = true;
+                    cfg.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidIssuer = Configuration.GetSection("JWTConfiguration")["JwtIssuer"],
+
+                        ValidateAudience = true,
+                        ValidAudience = Configuration.GetSection("JWTConfiguration")["JwtAudience"],
+                        ValidateLifetime = true,
+
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection("JWTConfiguration")["JwtKey"])),
+                        ValidateIssuerSigningKey = true,
+                        ClockSkew = TimeSpan.Zero,
+                    };
+                });
+
+            services.AddTransient<JWT>();
+        }
+       
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -162,6 +185,11 @@ namespace MusicPlayer.API
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private string GetXmlCommentsPath()
+        {
+            return string.Format(@"{0}\SwaggerFile.XML", AppDomain.CurrentDomain.BaseDirectory);
         }
     }
 }

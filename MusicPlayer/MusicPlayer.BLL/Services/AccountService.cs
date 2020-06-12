@@ -4,15 +4,11 @@ using MusicPlayer.BLL.Interfaces.IServices;
 using MusicPlayer.DAL.Entities;
 using MusicPlayer.DAL.Interfaces;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MusicPlayer.BLL.Services
 {
-    public class AccountService : SetOfFields, IUserService
+    public class AccountService : SetOfFields, IAccountService
     {
         public AccountService(IUnitOfWork unitOfWork,
              IMapper mapper)
@@ -20,7 +16,7 @@ namespace MusicPlayer.BLL.Services
         {
         }
 
-        public async Task<IdentityResult> CreateUserAsync(UserCreateDTO userDTO)
+        public async Task<IdentityResult> RegisterUserAsync(UserDTO userDTO)
         {
             var user = mapper.Map<User>(userDTO);
 
@@ -28,7 +24,7 @@ namespace MusicPlayer.BLL.Services
 
             user.NormalizedUserName = unitOfWork.UserManager.NormalizeName(userDTO.UserName);
 
-            var result = await unitOfWork.UserManager.CreateAsync(user, userDTO.ConfirmPassword);
+            var result = await unitOfWork.UserManager.CreateAsync(user, userDTO.Password);
 
             if(result.Succeeded)
             {
@@ -37,59 +33,84 @@ namespace MusicPlayer.BLL.Services
 
             return result;
         }
-        public async Task DeleteUserAsync(UserViewDTO userDTO)
-        {
-            var user = await unitOfWork.UserManager.FindByIdAsync(userDTO.Id);
 
-            await unitOfWork.UserManager.DeleteAsync(user);
-        }
-        public async Task<List<UserViewDTO>> GetAllUsersAsync()
+        public async Task<SignInResult> SignInUserAsync(UserLoginDTO userDTO)
         {
-            var userList = await unitOfWork.UserManager.Users.ToListAsync();
-
-            return mapper.Map<List<UserViewDTO>>(userList);
+            var user = await unitOfWork.UserManager.FindByEmailAsync(userDTO.Email);
+            try
+            {
+                var result = await unitOfWork.SignInManager.PasswordSignInAsync(user, userDTO.Password, userDTO.RememberMe, false);
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
         }
-        public async Task<UserViewDTO> GetUserByEmailAsync(string Email)
+
+        public async Task SignOutUserAsync()
+        {
+            await unitOfWork.SignInManager.SignOutAsync();
+        }
+
+        public async Task<UserDTO> GetUserByEmailAsync(string Email)
         {
             var user = await unitOfWork.UserManager.FindByEmailAsync(Email);
 
-            return mapper.Map<UserViewDTO>(user);
+            return mapper.Map<UserDTO>(user);
         }
-        public async Task<UserViewDTO> GetUserByIdAsync(string Id)
+        public async Task<UserDTO> GetUserByIdAsync(string Id)
         {
             var user = await unitOfWork.UserManager.FindByIdAsync(Id);
 
-            return mapper.Map<UserViewDTO>(user);
+            return mapper.Map<UserDTO>(user);
         }
-        public async Task<UserViewDTO> GetUserByUsernameAsync(string Username)
+        public async Task<UserDTO> GetUserByUsernameAsync(string UserName)
         {
-            var user = await unitOfWork.UserManager.FindByNameAsync(Username);
+            var user = await unitOfWork.UserManager.FindByNameAsync(UserName);
 
-            return mapper.Map<UserViewDTO>(user);
+            return mapper.Map<UserDTO>(user);
         }
-        public async Task<UserUpdateDTO> GetUserForUpdateAsync(string Id)
-        {
-            var user = await unitOfWork.UserManager.FindByIdAsync(Id);
 
-            return mapper.Map<UserUpdateDTO>(user);
-        }
-        public async Task<IdentityResult> UpdateUserAsync(string Id, UserUpdateDTO userDTO)
-        {
-            var user = mapper.Map<User>(userDTO);
-            user.Id = Id;
-            if (!string.IsNullOrEmpty(userDTO.NewPassword))
-            {
-                var res = await unitOfWork.UserManager.ChangePasswordAsync(user, userDTO.CurrentPassword, userDTO.NewPassword);
-                if (!res.Succeeded)
-                {
-                    return res;
-                }
-            }
-            user.NormalizedEmail = unitOfWork.UserManager.NormalizeEmail(userDTO.Email);
-            user.NormalizedUserName = unitOfWork.UserManager.NormalizeName(userDTO.UserName);
-            var result = await unitOfWork.UserManager.UpdateAsync(user);
-            return result;
-        }
+        #region Поки не потрібно
+        //public async Task DeleteUserAsync(UserViewDTO userDTO)
+        //{
+        //    var user = await unitOfWork.UserManager.FindByIdAsync(userDTO.Id);
+
+        //    await unitOfWork.UserManager.DeleteAsync(user);
+        //}
+        //public async Task<List<UserViewDTO>> GetAllUsersAsync()
+        //{
+        //    var userList = await unitOfWork.UserManager.Users.ToListAsync();
+
+        //    return mapper.Map<List<UserViewDTO>>(userList);
+        //}
+
+        //public async Task<UserUpdateDTO> GetUserForUpdateAsync(string Id)
+        //{
+        //    var user = await unitOfWork.UserManager.FindByIdAsync(Id);
+
+        //    return mapper.Map<UserUpdateDTO>(user);
+        //}
+        //public async Task<IdentityResult> UpdateUserAsync(string Id, UserUpdateDTO userDTO)
+        //{
+        //    var user = mapper.Map<User>(userDTO);
+        //    user.Id = Id;
+        //    if (!string.IsNullOrEmpty(userDTO.NewPassword))
+        //    {
+        //        var res = await unitOfWork.UserManager.ChangePasswordAsync(user, userDTO.CurrentPassword, userDTO.NewPassword);
+        //        if (!res.Succeeded)
+        //        {
+        //            return res;
+        //        }
+        //    }
+        //    user.NormalizedEmail = unitOfWork.UserManager.NormalizeEmail(userDTO.Email);
+        //    user.NormalizedUserName = unitOfWork.UserManager.NormalizeName(userDTO.UserName);
+        //    var result = await unitOfWork.UserManager.UpdateAsync(user);
+        //    return result;
+        //}
+        #endregion
+
         public async Task<bool> IsEmailUniqueAsync(string Email)
         {
             var user = await unitOfWork.UserManager.FindByEmailAsync(Email);
@@ -111,7 +132,11 @@ namespace MusicPlayer.BLL.Services
             return false;
         }
 
-        // SignIn Methods
+        public async Task<bool> CheckUserPasswordAsync(UserDTO userDTO, string password)
+        {
+            var user = mapper.Map<User>(userDTO);
 
+            return await unitOfWork.UserManager.CheckPasswordAsync(user, password);
+        }
     }
 }

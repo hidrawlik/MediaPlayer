@@ -1,16 +1,18 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BlazorUI.Services;
 using System.Net.Http;
+using FluentValidation.AspNetCore;
+using FluentValidation;
+using BlazorUI.Validation;
+using BlazorUI.Models.AccountModels;
+using BlazorUI.Services.Interfaces;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.Server;
 
 namespace BlazorUI
 {
@@ -28,17 +30,24 @@ namespace BlazorUI
             services.AddTransient(client =>
             new HttpClient
             {
-                BaseAddress = new Uri("http://localhost:65507")
+                BaseAddress = new Uri(Configuration.GetSection("AppSettings")["API_Address"])
             });
 
-            services.AddRazorPages();
+            services.AddRazorPages().AddFluentValidation();
             services.AddServerSideBlazor();
 
             #region Services
-            services.AddScoped<AlbumService>();
+            services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<IAlbumService, AlbumService>();
             services.AddScoped<MusicService>();
             services.AddScoped<PlaylistService>();
             #endregion
+
+            #region ViewValidators
+            services.AddTransient<IValidator<RegisterViewModel>, RegisterViewModelValidator>();
+            #endregion
+
+            services.AddScoped<AuthenticationStateProvider, ServerAuthenticationStateProvider>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -57,6 +66,9 @@ namespace BlazorUI
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

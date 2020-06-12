@@ -19,7 +19,7 @@ namespace BlazorUI.Services
 
         public async Task<IEnumerable<MusicViewModel>> GetAllMusicAsync()
         {
-            var response = await _httpClient.GetAsync("api/music");
+            var response = await _httpClient.GetAsync("music");
             response.EnsureSuccessStatusCode();
 
             using var responseContent = await response.Content.ReadAsStreamAsync();
@@ -28,7 +28,7 @@ namespace BlazorUI.Services
 
         public async Task<IEnumerable<MusicViewModel>> GetAllMusicByAlbumAsync(int AlbumId)
         {
-            var response = await _httpClient.GetAsync($"api/music/album/{AlbumId}");
+            var response = await _httpClient.GetAsync($"music/album/{AlbumId}");
             response.EnsureSuccessStatusCode();
 
             using var responseContent = await response.Content.ReadAsStreamAsync();
@@ -37,7 +37,7 @@ namespace BlazorUI.Services
 
         public async Task<MusicViewModel> GetMusicForViewAsync(int id)
         {
-            var response = await _httpClient.GetAsync($"api/music/{id}");
+            var response = await _httpClient.GetAsync($"music/{id}");
             response.EnsureSuccessStatusCode();
 
             using var responseContent = await response.Content.ReadAsStreamAsync();

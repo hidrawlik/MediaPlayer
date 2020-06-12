@@ -48,15 +48,15 @@ namespace MusicPlayer.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c35935bc-eaf6-4b31-9b2b-058d98896a0d",
-                            ConcurrencyStamp = "84a80432-75fb-4912-bedb-8c10c388ed08",
+                            Id = "d3f6d75b-cadc-4fb0-8d49-e1957095f73b",
+                            ConcurrencyStamp = "cf8c528b-d92d-4692-8926-5a01f97957a7",
                             Name = "Visitor",
                             NormalizedName = "VISITOR"
                         },
                         new
                         {
-                            Id = "5fc857dd-8ed6-417a-adce-1bc2d2a45aa3",
-                            ConcurrencyStamp = "202c3b04-4608-46af-bc4c-d4780092cfb2",
+                            Id = "05909567-2313-4ed6-9b45-c67034b58709",
+                            ConcurrencyStamp = "26d609e1-9b7c-447b-9603-69652e42f6cc",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -569,18 +569,19 @@ namespace MusicPlayer.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d3a96cbd-14dc-412c-9376-04051c634c27",
+                            Id = "3d53d071-51b7-41c6-bbdf-f4f234a05d59",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "11ece520-5900-4b45-9cd0-6430010b40a6",
+                            ConcurrencyStamp = "63066b12-1702-451a-85f5-b43079266ada",
                             Email = "test@gmail.com",
-                            EmailConfirmed = false,
+                            EmailConfirmed = true,
                             FirstName = "Oleksandr",
                             LastName = "Slobodian",
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST@GMAIL.COM",
                             NormalizedUserName = "CARENDOH",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEYOfbhhZP2uqLre7aNmNHV2NkGpy2nUQwx6Y8khu2hOAj2VZ1Q6hNyu34Yq0Dcl4g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6975444f-ee95-426b-b267-2925929a26cc",
+                            SecurityStamp = "e58f6100-d3a9-4cdd-a9c7-2e6737f9195b",
                             TwoFactorEnabled = false,
                             UserName = "Carendoh"
                         });

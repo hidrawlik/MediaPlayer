@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MusicPlayer.DAL.Migrations
 {
-    public partial class MusicDBMigration : Migration
+    public partial class MusicDbMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -295,14 +295,14 @@ namespace MusicPlayer.DAL.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "c35935bc-eaf6-4b31-9b2b-058d98896a0d", "84a80432-75fb-4912-bedb-8c10c388ed08", "Visitor", "VISITOR" },
-                    { "5fc857dd-8ed6-417a-adce-1bc2d2a45aa3", "202c3b04-4608-46af-bc4c-d4780092cfb2", "Administrator", "ADMINISTRATOR" }
+                    { "d3f6d75b-cadc-4fb0-8d49-e1957095f73b", "cf8c528b-d92d-4692-8926-5a01f97957a7", "Visitor", "VISITOR" },
+                    { "05909567-2313-4ed6-9b45-c67034b58709", "26d609e1-9b7c-447b-9603-69652e42f6cc", "Administrator", "ADMINISTRATOR" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "PhotoPath", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "d3a96cbd-14dc-412c-9376-04051c634c27", 0, "11ece520-5900-4b45-9cd0-6430010b40a6", "test@gmail.com", false, "Oleksandr", "Slobodian", false, null, "TEST@GMAIL.COM", "CARENDOH", null, null, false, null, "6975444f-ee95-426b-b267-2925929a26cc", false, "Carendoh" });
+                values: new object[] { "3d53d071-51b7-41c6-bbdf-f4f234a05d59", 0, "63066b12-1702-451a-85f5-b43079266ada", "test@gmail.com", true, "Oleksandr", "Slobodian", false, null, "TEST@GMAIL.COM", "CARENDOH", "AQAAAAEAACcQAAAAEEYOfbhhZP2uqLre7aNmNHV2NkGpy2nUQwx6Y8khu2hOAj2VZ1Q6hNyu34Yq0Dcl4g==", null, false, null, "e58f6100-d3a9-4cdd-a9c7-2e6737f9195b", false, "Carendoh" });
 
             migrationBuilder.InsertData(
                 table: "Genres",

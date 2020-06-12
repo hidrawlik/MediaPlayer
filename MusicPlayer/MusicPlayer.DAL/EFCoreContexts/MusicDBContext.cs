@@ -28,7 +28,7 @@ namespace MusicPlayer.DAL.EFCoreContexts
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(MyConnection.Connection);
+                optionsBuilder.UseSqlServer(ConnectionString.Value);
             }
             optionsBuilder.EnableSensitiveDataLogging();
         }
@@ -38,12 +38,12 @@ namespace MusicPlayer.DAL.EFCoreContexts
             base.OnModelCreating(modelBuilder);
 
             #region Configuration
-            modelBuilder.ApplyConfiguration(new GenreConfiguration());
             modelBuilder.ApplyConfiguration(new AlbumConfiguration());
+            modelBuilder.ApplyConfiguration(new GenreConfiguration());
             modelBuilder.ApplyConfiguration(new MusicConfiguration());
             modelBuilder.ApplyConfiguration(new MusicGenreConfiguration());
-            modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
             #endregion
 
             modelBuilder.Entity<User>(entity =>

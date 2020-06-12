@@ -1,4 +1,5 @@
-﻿.albumCard {
+﻿.albumCard
+{
     border-radius: 10px;
     margin-top: 3%;
     box-shadow: 5px black;
@@ -39,4 +40,19 @@ img {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     max-height: 300px;
+}
+
+.content
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.albumList
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-bottom: 30px;
 }

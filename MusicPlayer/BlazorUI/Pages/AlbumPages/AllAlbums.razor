@@ -1,31 +1,23 @@
 ﻿@page "/Albums"
 @using BlazorUI.Models
-@using BlazorUI.Services
+@using BlazorUI.Services.Interfaces
 
-@inject AlbumService albumService
+@inject IAlbumService albumService
 
-<h1 style="width: 100%;">Albums</h1>
-@if (albums == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    foreach (var album in albums)
+<h1>Albums</h1>
+<div class="albumList">
+    @if (albums == null)
     {
-        <AlbumCard album=@album></AlbumCard>
+        <p><em>Loading...</em></p>
     }
-}
-
-<style>
-    .content {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        padding-bottom:30px;
+    else
+    {
+        foreach (var album in albums)
+        {
+            <AlbumCard album=@album></AlbumCard>
+        }
     }
-</style>
+</div>
 
 @code {
     private IEnumerable<AlbumViewModel> albums;

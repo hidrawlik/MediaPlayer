@@ -3,9 +3,9 @@ using MusicPlayer.BLL.DTOs;
 
 namespace MusicPlayer.BLL.Validation
 {
-    public class UserCreateDTOValidator : AbstractValidator<UserCreateDTO>
+    public class UserDTOValidator : AbstractValidator<UserDTO>
     {
-        public UserCreateDTOValidator()
+        public UserDTOValidator()
         {
             RuleFor(e => e.UserName)
                 .NotEmpty()
@@ -13,11 +13,11 @@ namespace MusicPlayer.BLL.Validation
                 .MaximumLength(20);
 
             RuleFor(e => e.Email)
-                .NotEmpty()
+                .NotNull()
                 .EmailAddress();
 
             RuleFor(e => e.Password)
-                .NotEmpty();
+                .NotNull();
 
             RuleFor(e => e.ConfirmPassword)
                 .Equal(e => e.Password);

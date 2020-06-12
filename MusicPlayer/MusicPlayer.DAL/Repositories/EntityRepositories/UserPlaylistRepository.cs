@@ -24,7 +24,7 @@ namespace MusicPlayer.DAL.Repositories.EntityRepositories
 
         public async Task<IEnumerable<UserPlaylist>> GetByUserId(string UserId)
         {
-            return await db.Set<UserPlaylist>().Where(e => e.UserId == UserId).ToListAsync();
+            return await db.Set<UserPlaylist>().Where(e => e.UserId.Equals(UserId)).ToListAsync();
         }
     }
 }

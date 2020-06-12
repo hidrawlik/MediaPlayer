@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MusicPlayer.BLL.DTOs;
 using MusicPlayer.BLL.Interfaces.IServices;
@@ -8,6 +9,7 @@ namespace MusicPlayer.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PlaylistController : Controller
     {
         private readonly IPlaylistService playlistService;
@@ -40,11 +42,10 @@ namespace MusicPlayer.API.Controllers
         [HttpGet("{UserId}")]
         public async Task<ActionResult<IEnumerable<PlaylistDTO>>> GetAllUserPlaylists(string UserId)
         {
-            if (UserId == null)
+            if(string.IsNullOrEmpty(UserId))
             {
                 return BadRequest();
             }
-
             var playlists = await playlistService.GetPlaylistDTOListAsync(UserId);
             if (playlists == null)
             {
@@ -80,7 +81,7 @@ namespace MusicPlayer.API.Controllers
         [HttpGet]
         public async Task<ActionResult<PlaylistDTO>> GetUserPlaylist(string UserId, string PlaylistName)
         {
-            if (string.IsNullOrEmpty(UserId) || string.IsNullOrEmpty(PlaylistName))
+            if (string.IsNullOrEmpty(PlaylistName) || string.IsNullOrEmpty(UserId))
             {
                 return BadRequest();
             }
@@ -123,7 +124,7 @@ namespace MusicPlayer.API.Controllers
         [HttpPost]
         public async Task<ActionResult> PostPlaylist(string UserId, [FromBody]PlaylistCUDTO playlistCreateDTO) 
         {
-            if (playlistCreateDTO == null || string.IsNullOrWhiteSpace(UserId))
+            if (playlistCreateDTO == null || UserId == null)
             {
                 return BadRequest();
             }

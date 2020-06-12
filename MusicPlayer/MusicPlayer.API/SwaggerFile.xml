@@ -4,6 +4,26 @@
         <name>MusicPlayer.API</name>
     </assembly>
     <members>
+        <member name="M:MusicPlayer.API.Controllers.AccountController.RegisterUser(MusicPlayer.BLL.DTOs.UserDTO)">
+            <summary>
+            Register
+            </summary>
+            <param name="userDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicPlayer.API.Controllers.AccountController.Login(MusicPlayer.BLL.DTOs.UserLoginDTO)">
+            <summary>
+            Log in
+            </summary>
+            <param name="userDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicPlayer.API.Controllers.AccountController.Logout">
+            <summary>
+            Logout
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:MusicPlayer.API.Controllers.PlaylistController.GetAll">
             <summary>
             Get all playlists
@@ -186,48 +206,6 @@
             Delete by Id
             </summary>
             <param name="Id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MusicPlayer.WEBAPI.Controllers.UserController.Get">
-            <summary>
-            GetAll
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:MusicPlayer.WEBAPI.Controllers.UserController.Get(System.String)">
-            <summary>
-            GetForViewById
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MusicPlayer.WEBAPI.Controllers.UserController.GetForUpdate(System.String)">
-            <summary>
-            GetForUpdateById
-            </summary>
-            <param name="Id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MusicPlayer.WEBAPI.Controllers.UserController.Post(MusicPlayer.BLL.DTOs.UserCreateDTO)">
-            <summary>
-            Create user
-            </summary>
-            <param name="userDTO"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MusicPlayer.WEBAPI.Controllers.UserController.Put(System.String,MusicPlayer.BLL.DTOs.UserUpdateDTO)">
-            <summary>
-            Update user
-            </summary>
-            <param name="id"></param>
-            <param name="userDTO"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MusicPlayer.WEBAPI.Controllers.UserController.Delete(System.String)">
-            <summary>
-            Delete user
-            </summary>
-            <param name="id"></param>
             <returns></returns>
         </member>
     </members>

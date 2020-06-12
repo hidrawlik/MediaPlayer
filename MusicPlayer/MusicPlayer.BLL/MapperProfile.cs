@@ -37,16 +37,15 @@ namespace MusicPlayer.BLL
                 .ReverseMap();
 
             //Identity
-            CreateMap<User, UserCreateDTO>()
-                .ForMember(e => e.UserName, opt => opt.MapFrom(e => e.UserName))
+            CreateMap<UserDTO, User>()
+                .ForMember(e => e.Id, opt => opt.Ignore());
+
+            CreateMap<User, UserDTO>();
+
+            CreateMap<User, UserLoginDTO>()
                 .ReverseMap();
 
             CreateMap<User, UserUpdateDTO>()
-                .ConstructUsing(e => new UserUpdateDTO(e.Id))
-                .ReverseMap();
-
-            CreateMap<User, UserViewDTO>()
-                .ConstructUsing(e => new UserViewDTO(e.Id))
                 .ReverseMap();
         }
     }
