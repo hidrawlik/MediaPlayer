@@ -33,13 +33,13 @@ namespace MusicPlayer.API
             var expires = DateTime.Now.AddDays(Convert.ToDouble(configuration["JWTConfiguration:JwtExpireDays"]));
 
             var token = new JwtSecurityToken(
-                configuration["JWTConfiguration:JwtIssuer"],
-                configuration["JWTConfiguration:JwtAudience"],
-                claims,
+                issuer: configuration["JWTConfiguration:JwtIssuer"],
+                audience: configuration["JWTConfiguration:JwtAudience"],
+                claims: claims,
                 expires: expires,
                 signingCredentials: creds
             );
-
+            
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }

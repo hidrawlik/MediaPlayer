@@ -25,6 +25,7 @@ using MusicPlayer.BLL.DTOs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Collections.Generic;
 
 namespace MusicPlayer.API
 {
@@ -88,6 +89,33 @@ namespace MusicPlayer.API
                     Description = "ASP.NET Core Web API"
                 });
 
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description = "JWT Authorization header using the bearer scheme"
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Id = "Bearer",
+                                Type = ReferenceType.SecurityScheme
+                            }
+                        },
+                        new List<string>()
+                    }
+                });
+
+                c.OperationFilter<AuthOperationFilter>();
+
                 c.IncludeXmlComments(GetXmlCommentsPath());
             });
             #endregion
@@ -131,13 +159,13 @@ namespace MusicPlayer.API
             });
             #endregion
 
+            #region JWT Authentication
             services
                 .AddAuthentication(options =>
                 {
                     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
                     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-
                 })
                 .AddJwtBearer(cfg =>
                 {
@@ -150,18 +178,21 @@ namespace MusicPlayer.API
 
                         ValidateAudience = true,
                         ValidAudience = Configuration.GetSection("JWTConfiguration")["JwtAudience"],
-                        ValidateLifetime = true,
 
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection("JWTConfiguration")["JwtKey"])),
                         ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection("JWTConfiguration")["JwtKey"])),
+
+                        ValidateLifetime = false,
+
                         ClockSkew = TimeSpan.Zero,
                     };
                 });
 
             services.AddTransient<JWT>();
+            #endregion
         }
-       
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {

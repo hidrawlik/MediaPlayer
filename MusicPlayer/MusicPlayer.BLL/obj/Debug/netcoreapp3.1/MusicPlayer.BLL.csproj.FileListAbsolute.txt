@@ -3,7 +3,6 @@ F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\Mu
 F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\MusicPlayer.BLL\obj\Debug\netcoreapp3.1\MusicPlayer.BLL.csprojAssemblyReference.cache
 F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\MusicPlayer.BLL\obj\Debug\netcoreapp3.1\MusicPlayer.BLL.AssemblyInfoInputs.cache
 F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\MusicPlayer.BLL\obj\Debug\netcoreapp3.1\MusicPlayer.BLL.AssemblyInfo.cs
-F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\MusicPlayer.BLL\obj\Debug\netcoreapp3.1\MusicPlayer.BLL.csproj.CoreCompileInputs.cache
 F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\MusicPlayer.BLL\bin\Debug\netcoreapp3.1\MusicPlayer.BLL.pdb
 F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\MusicPlayer.BLL\bin\Debug\netcoreapp3.1\MusicPlayer.DAL.dll
 F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\MusicPlayer.BLL\bin\Debug\netcoreapp3.1\MusicPlayer.DAL.pdb
@@ -22,3 +21,4 @@ F:\Саша навчання\2 Курс\4 семестр\ООП\Answers\MusicPla
 F:\Саша навчання\2 Курс\4 семестр\ООП\Answers\MusicPlayer\MusicPlayer.BLL\obj\Debug\netcoreapp3.1\MusicPlayer.BLL.csproj.CopyComplete
 F:\Саша навчання\2 Курс\4 семестр\ООП\Answers\MusicPlayer\MusicPlayer.BLL\obj\Debug\netcoreapp3.1\MusicPlayer.BLL.dll
 F:\Саша навчання\2 Курс\4 семестр\ООП\Answers\MusicPlayer\MusicPlayer.BLL\obj\Debug\netcoreapp3.1\MusicPlayer.BLL.pdb
+F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\MusicPlayer.BLL\obj\Debug\netcoreapp3.1\MusicPlayer.BLL.csproj.CoreCompileInputs.cache

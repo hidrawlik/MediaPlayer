@@ -1,8 +1,5 @@
 ﻿using FluentValidation;
 using MusicPlayer.BLL.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MusicPlayer.BLL.Validation
 {
@@ -20,10 +17,7 @@ namespace MusicPlayer.BLL.Validation
                 .EmailAddress();
 
             RuleFor(e => e.NewPassword)
-                .MinimumLength(6);
-
-            RuleFor(e => e.ConfirmPassword)
-                .Equal(e => e.NewPassword);
+                .MinimumLength(4);
 
             RuleFor(e => e.FirstName)
                 .MinimumLength(2)

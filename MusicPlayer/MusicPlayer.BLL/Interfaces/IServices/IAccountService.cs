@@ -1,20 +1,21 @@
 ﻿using MusicPlayer.BLL.DTOs;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace MusicPlayer.BLL.Interfaces.IServices
 {
     public interface IAccountService
     {
-        Task<IdentityResult> RegisterUserAsync(UserDTO user);
+        Task<IdentityResult> CreateUserAsync(UserDTO user);
 
-        Task<SignInResult> SignInUserAsync(UserLoginDTO userDTO);
+        Task<SignInResult> AuthenticateUserAsync(UserLoginDTO userDTO);
 
         Task SignOutUserAsync();
 
-        //Task DeleteUserAsync(UserViewDTO userDTO);
+        Task DeleteUserAsync(string Id);
 
-        //Task<List<UserViewDTO>> GetAllUsersAsync();
+        Task<IEnumerable<UserDTO>> GetAllUsersAsync();
 
         Task<UserDTO> GetUserByIdAsync(string Id);
 
@@ -22,9 +23,9 @@ namespace MusicPlayer.BLL.Interfaces.IServices
 
         Task<UserDTO> GetUserByEmailAsync(string Email);
 
-        //Task<UserUpdateDTO> GetUserForUpdateAsync(string Id);
+        Task<UserUpdateDTO> GetUserForUpdateAsync(string UserId);
 
-        //Task<IdentityResult> UpdateUserAsync(string Id, UserUpdateDTO userDTO);
+        Task<IdentityResult> UpdateUserAsync(string UserId, UserUpdateDTO userParam);
 
         Task<bool> IsEmailUniqueAsync(string Email);
 
