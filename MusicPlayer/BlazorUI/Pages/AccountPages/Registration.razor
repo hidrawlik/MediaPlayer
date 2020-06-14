@@ -1,0 +1,47 @@
+﻿@layout AuthenticationLayout
+@using BlazorUI.Models.AccountModels;
+
+@page "/Account/Register"
+    <div class="col-lg-12 card p-5">
+        <EditForm Model="@user" OnValidSubmit="@RegisterUser">
+            <FluentValidationValidator />
+            <div>
+                <h3 style="font-weight:bold; color: brown">Music Player Register</h3>
+            </div>
+            <div>
+                <br />
+            </div>
+            <ValidationMessage For="@(() => user.userName)" />
+            <div class="card-columns row">
+                <InputText class="form-control col-12" @bind-Value="user.userName" placeholder="Username" />
+            </div>
+            <br />
+            <ValidationMessage For="@(() => user.email)" />
+            <div class="card-columns row">
+                <InputText class="form-control col-12" @bind-Value="user.email" placeholder="Email address" />
+            </div>
+            <br />
+            <ValidationMessage For="@(() => user.password)" />
+            <div class="card-columns row">
+                <InputText type="password" class="form-control col-12" @bind-Value="user.password" placeholder="Password" />
+            </div>
+            <br />
+            <ValidationMessage For="@(() => user.confirmPassword)" />
+            <div class="card-columns row">
+                <InputText type="password" class="form-control col-12" @bind-Value="user.confirmPassword" placeholder="Confirm password" />
+            </div>
+            <br />
+            <div class="row flex-nowrap align-items-center">
+                <input type="submit" class="form-control col-6 btn btn-primary" value="Sign up" />
+                <a href="Account/Login" class="col-7">Already an user?</a>
+            </div>
+        </EditForm>
+    </div>
+    @code {
+        RegisterViewModel user = new RegisterViewModel();
+
+        private void RegisterUser()
+        {
+
+        }
+    }

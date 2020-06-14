@@ -6,10 +6,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BlazorUI.Services;
 using System.Net.Http;
-using FluentValidation.AspNetCore;
-using FluentValidation;
-using BlazorUI.Validation;
-using BlazorUI.Models.AccountModels;
 using BlazorUI.Services.Interfaces;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server;
@@ -33,7 +29,7 @@ namespace BlazorUI
                 BaseAddress = new Uri(Configuration.GetSection("AppSettings")["API_Address"])
             });
 
-            services.AddRazorPages().AddFluentValidation();
+            services.AddRazorPages();
             services.AddServerSideBlazor();
 
             #region Services
@@ -41,10 +37,6 @@ namespace BlazorUI
             services.AddTransient<IAlbumService, AlbumService>();
             services.AddScoped<MusicService>();
             services.AddScoped<PlaylistService>();
-            #endregion
-
-            #region ViewValidators
-            services.AddTransient<IValidator<RegisterViewModel>, RegisterViewModelValidator>();
             #endregion
 
             services.AddScoped<AuthenticationStateProvider, ServerAuthenticationStateProvider>();

@@ -16,6 +16,11 @@ namespace BlazorUI.Services
             _httpClient = client;
         }
 
+        public Task<UserViewModel> AuthenticateUserAsync(UserViewModel userParams)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public async Task<RegisterViewModel> RegisterUserAsync(RegisterViewModel user)
         {
             string serializedUser = JsonSerializer.Serialize(user);

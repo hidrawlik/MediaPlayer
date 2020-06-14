@@ -6,5 +6,7 @@ namespace BlazorUI.Services.Interfaces
     public interface IAccountService
     {
         Task<RegisterViewModel> RegisterUserAsync(RegisterViewModel user);
+
+        Task<UserViewModel> AuthenticateUserAsync(UserViewModel userParams);
     }
 }

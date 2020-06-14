@@ -7,9 +7,9 @@ using MusicPlayer.BLL.Interfaces.IServices;
 
 namespace MusicPlayer.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class PlaylistController : Controller
     {
         private readonly IPlaylistService playlistService;
@@ -24,6 +24,7 @@ namespace MusicPlayer.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<PlaylistDTO>>> GetAll()
         {
             var playlists = await playlistService.GetAllAsync();

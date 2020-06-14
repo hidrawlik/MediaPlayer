@@ -1,0 +1,41 @@
+﻿@layout AuthenticationLayout
+@page "/Account/Login"
+@using BlazorUI.Models.AccountModels;
+
+<div class="col-lg-12 card p-5">
+    <EditForm Model="@user" OnValidSubmit="@LoginUser">
+        <FluentValidationValidator />
+        <div>
+            <h3 style="font-weight:bold; color:brown;">Music Player Login</h3>
+        </div>
+        <div>
+            <br />
+        </div>
+        <ValidationMessage For="@(() => user.email)" />
+        <div class="card-columns row">
+            <InputText class="form-control" @bind-Value="user.email" placeholder="Email address" />
+        </div>
+        <br />
+        <ValidationMessage For="@(() => user.password)" />
+        <div class="card-columns row">
+            <InputText type="password" class="form-control" @bind-Value="user.password" placeholder="Password" />
+        </div>
+        <br />
+        <div>
+            <span class="col-12"></span>
+            <input type="submit" class="form-control col-6 btn btn-primary" value="Login" />
+            <a href="Account/Register" class="col-5">Sign up</a>
+        </div>
+    </EditForm>
+    <span>@Message</span>
+</div>
+
+@code {
+    UserViewModel user = new UserViewModel();
+    string Message;
+
+    private void LoginUser()
+    {
+        Message = "Submited Successfully!";
+    }
+}

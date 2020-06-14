@@ -1,9 +1,5 @@
 ﻿using BlazorUI.Models.AccountModels;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlazorUI.Validation
 {
@@ -11,20 +7,21 @@ namespace BlazorUI.Validation
     {
         public RegisterViewModelValidator()
         {
-            RuleFor(e => e.UserName)
+            RuleFor(e => e.userName)
                 .NotEmpty()
-                .MinimumLength(2)
-                .MaximumLength(20);
+                .MinimumLength(2).WithMessage("Мінімум 2 символи")
+                .MaximumLength(20).WithMessage("Максимум 20 символів");
 
-            RuleFor(e => e.Email)
+            RuleFor(e => e.email)
                 .NotNull()
                 .EmailAddress();
 
-            RuleFor(e => e.Password)
-                .NotNull();
+            RuleFor(e => e.password)
+                .NotNull()
+                .MinimumLength(4).WithMessage("Довжина паролю мінімум 4 символи");
 
-            RuleFor(e => e.ConfirmPassword)
-                .Equal(e => e.Password);
+            RuleFor(e => e.confirmPassword)
+                .Equal(e => e.password).WithMessage("Паролі не збігаються");
         }
     }
 }

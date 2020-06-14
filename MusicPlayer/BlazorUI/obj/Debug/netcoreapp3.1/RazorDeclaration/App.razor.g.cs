@@ -76,6 +76,20 @@ using BlazorUI.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 10 "F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\BlazorUI\_Imports.razor"
+using Blazored.FluentValidation;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 11 "F:\Саша навчання\2 Курс\4 семестр\ООП\AspDotNetCore\MusicPlayer\BlazorUI\_Imports.razor"
+using MatBlazor;
+
+#line default
+#line hidden
+#nullable disable
     public partial class App : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
