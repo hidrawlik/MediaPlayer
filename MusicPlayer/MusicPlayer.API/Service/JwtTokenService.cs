@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using MusicPlayer.API.Interface;
 using MusicPlayer.BLL.DTOs;
 using System;
 using System.Collections.Generic;
@@ -7,13 +8,13 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace MusicPlayer.API
+namespace MusicPlayer.API.Service
 {
-    public class JWT
+    public class JwtTokenService : IJwtTokenService
     {
         private readonly IConfiguration configuration;
 
-        public JWT(IConfiguration configuration)
+        public JwtTokenService(IConfiguration configuration)
         {
             this.configuration = configuration;
         }
@@ -22,10 +23,10 @@ namespace MusicPlayer.API
         {
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Email, email),
+                new Claim("id", user.Id),
                 new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.NameIdentifier, user.Id)
+                new Claim(JwtRegisteredClaimNames.Email, email),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWTConfiguration:JwtKey"]));

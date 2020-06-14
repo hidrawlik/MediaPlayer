@@ -1,5 +1,6 @@
 ﻿using BlazorUI.Models.AccountModels;
 using FluentValidation;
+using System.Linq;
 
 namespace BlazorUI.Validation
 {
@@ -18,10 +19,22 @@ namespace BlazorUI.Validation
 
             RuleFor(e => e.password)
                 .NotNull()
+                .Must(password => PasswordIsValid(password)).WithMessage("Пароль повинен містити принаймні одну цифру та літеру")
                 .MinimumLength(4).WithMessage("Довжина паролю мінімум 4 символи");
 
             RuleFor(e => e.confirmPassword)
                 .Equal(e => e.password).WithMessage("Паролі не збігаються");
+        }
+
+        private bool PasswordIsValid(string password)
+        {
+            if (string.IsNullOrEmpty(password) || 
+                !password.Any(c => char.IsDigit(c)) || 
+                !password.Any(c => char.IsLetter(c)))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

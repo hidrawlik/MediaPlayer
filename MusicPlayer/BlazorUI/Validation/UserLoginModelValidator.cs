@@ -3,16 +3,16 @@ using FluentValidation;
 
 namespace BlazorUI.Validation
 {
-    public class UserViewModelValidator : AbstractValidator<UserViewModel>
+    public class UserLoginModelValidator : AbstractValidator<UserLoginModel>
     {
-        public UserViewModelValidator()
+        public UserLoginModelValidator()
         {
             RuleFor(e => e.email)
                 .NotNull()
                 .EmailAddress();
 
             RuleFor(e => e.password)
-                .NotEmpty();
+                .NotNull();
         }
     }
 }

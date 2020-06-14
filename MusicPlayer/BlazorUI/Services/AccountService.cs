@@ -2,8 +2,9 @@
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-using System.IO;
 using BlazorUI.Services.Interfaces;
+using System.Collections.Generic;
+using BlazorUI.Pages;
 
 namespace BlazorUI.Services
 {
@@ -16,16 +17,11 @@ namespace BlazorUI.Services
             _httpClient = client;
         }
 
-        public Task<UserViewModel> AuthenticateUserAsync(UserViewModel userParams)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public async Task<RegisterViewModel> RegisterUserAsync(RegisterViewModel user)
+        public async Task<List<string>> RegisterUserAsync(RegisterViewModel user)
         {
             string serializedUser = JsonSerializer.Serialize(user);
 
-            var requestMessage = new HttpRequestMessage(HttpMethod.Post, "Account/Registration");
+            var requestMessage = new HttpRequestMessage(HttpMethod.Post, "Account/Register");
             requestMessage.Content = new StringContent(serializedUser);
 
             requestMessage.Content.Headers.ContentType
@@ -33,13 +29,37 @@ namespace BlazorUI.Services
 
             var response = await _httpClient.SendAsync(requestMessage);
 
-            var responseStatusCode = response.StatusCode;
+            if(response.IsSuccessStatusCode)
+            {
+                return null;
+            }
 
             using var responseBody = await response.Content.ReadAsStreamAsync();
 
-            var returnedUser = await JsonSerializer.DeserializeAsync<RegisterViewModel>(responseBody);
+            var errorList = await JsonSerializer.DeserializeAsync<List<string>>(responseBody);
 
-            return await Task.FromResult(returnedUser);
+            return errorList;
+        }
+
+        public async Task<UserViewModel> AuthenticateUserAsync(UserLoginModel user)
+        {
+            string serializedUser = JsonSerializer.Serialize(user);
+
+            var requestMessage = new HttpRequestMessage(HttpMethod.Post, "Account/Authenticate");
+            requestMessage.Content = new StringContent(serializedUser);
+
+            requestMessage.Content.Headers.ContentType
+                = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+
+            var response = await _httpClient.SendAsync(requestMessage);
+
+            response.EnsureSuccessStatusCode();
+
+            using var responseBody = await response.Content.ReadAsStreamAsync();
+
+            var returnedUser = await JsonSerializer.DeserializeAsync<UserViewModel>(responseBody);
+
+            return returnedUser;
         }
     }
 }

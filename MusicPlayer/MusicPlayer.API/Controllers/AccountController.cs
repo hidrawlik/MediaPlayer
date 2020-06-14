@@ -5,6 +5,8 @@ using MusicPlayer.BLL.DTOs;
 using System;
 using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
+using MusicPlayer.API.Interface;
+using System.Linq;
 
 namespace MusicPlayer.API.Controllers
 {
@@ -14,10 +16,10 @@ namespace MusicPlayer.API.Controllers
     public class AccountController : Controller
     {
         private readonly IAccountService accountService;
-        private readonly JWT jwt;
+        private readonly IJwtTokenService jwt;
 
         public AccountController(IAccountService accountService,
-            JWT jwt)
+            IJwtTokenService jwt)
         {
             this.accountService = accountService;
             this.jwt = jwt;
@@ -30,7 +32,7 @@ namespace MusicPlayer.API.Controllers
         /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("Register")]
-        public async Task<ActionResult<UserDTO>> RegisterUser([FromBody]UserDTO userDTO)
+        public async Task<IActionResult> RegisterUser([FromBody] UserDTO userDTO)
         {
             if (!await accountService.IsEmailUniqueAsync(userDTO.Email))
             {
@@ -44,7 +46,11 @@ namespace MusicPlayer.API.Controllers
 
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                var errorList = (from item in ModelState
+                                 where item.Value.Errors.Any()
+                                 select item.Value.Errors[0].ErrorMessage).ToList();
+
+                return BadRequest(errorList);
             }
 
             var result = await accountService.CreateUserAsync(userDTO);
@@ -55,7 +61,12 @@ namespace MusicPlayer.API.Controllers
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
-                return BadRequest(ModelState);
+
+                var errorList = (from item in ModelState
+                                 where item.Value.Errors.Any()
+                                 select item.Value.Errors[0].ErrorMessage).ToList();
+
+                return BadRequest(errorList);
             }
 
             return Ok();
@@ -68,7 +79,7 @@ namespace MusicPlayer.API.Controllers
         /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("Authenticate")]
-        public async Task<IActionResult> Authenticate([FromBody]UserLoginDTO userDTO)
+        public async Task<IActionResult> Authenticate([FromBody] UserLoginDTO userDTO)
         {
             if (!ModelState.IsValid)
             {
@@ -83,8 +94,8 @@ namespace MusicPlayer.API.Controllers
                 return Ok(new
                 {
                     id = user.Id,
-                    Username = user.UserName,
-                    Token = jwt.GenerateJwtToken(user.Email, user)
+                    userName = user.UserName,
+                    token = jwt.GenerateJwtToken(user.Email, user)
                 });
             }
 
@@ -139,7 +150,7 @@ namespace MusicPlayer.API.Controllers
         /// <param name="userDTO"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(string id, [FromBody]UserUpdateDTO userDTO)
+        public async Task<IActionResult> Put(string id, [FromBody] UserUpdateDTO userDTO)
         {
             if (id == null || userDTO == null)
             {
@@ -188,7 +199,7 @@ namespace MusicPlayer.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {

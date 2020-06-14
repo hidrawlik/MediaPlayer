@@ -26,6 +26,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Collections.Generic;
+using MusicPlayer.API.Interface;
+using MusicPlayer.API.Service;
 
 namespace MusicPlayer.API
 {
@@ -188,7 +190,7 @@ namespace MusicPlayer.API
                     };
                 });
 
-            services.AddTransient<JWT>();
+            services.AddTransient<IJwtTokenService, JwtTokenService>();
             #endregion
         }
 

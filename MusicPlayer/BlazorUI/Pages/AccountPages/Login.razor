@@ -1,10 +1,16 @@
 ﻿@layout AuthenticationLayout
 @page "/Account/Login"
 @using BlazorUI.Models.AccountModels;
+@using Services.Interfaces
+@using Microsoft.AspNetCore.Components
+
+@inject IAccountService accountService
+@inject NavigationManager NavigationManager
 
 <div class="col-lg-12 card p-5">
     <EditForm Model="@user" OnValidSubmit="@LoginUser">
         <FluentValidationValidator />
+        <div>@Message</div>
         <div>
             <h3 style="font-weight:bold; color:brown;">Music Player Login</h3>
         </div>
@@ -27,15 +33,28 @@
             <a href="Account/Register" class="col-5">Sign up</a>
         </div>
     </EditForm>
-    <span>@Message</span>
 </div>
 
 @code {
-    UserViewModel user = new UserViewModel();
+    UserLoginModel user = new UserLoginModel
+    {
+        email = "test@gmail.com",
+        password = "0000a"
+    };
+
     string Message;
 
-    private void LoginUser()
+    private async Task LoginUser()
     {
-        Message = "Submited Successfully!";
+        try
+        {
+            await accountService.AuthenticateUserAsync(user);
+
+            NavigationManager.NavigateTo("/");
+        }
+        catch
+        {
+            Message = "Невірна адреса електронної пошти або пароль";
+        }
     }
 }
